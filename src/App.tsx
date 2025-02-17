@@ -4,7 +4,6 @@ import { BrowserRouter } from 'react-router-dom';
 
 import i18n from './core/i18n';
 import { customRoutes } from './core/routes';
-import './App.css';
 
 const App: FC = () => {
   return (

@@ -6,7 +6,7 @@ import type { FC, PropsWithChildren } from 'react';
 
 const AppLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
-    <div>
+    <div className="w-full">
       <Header title={APP_NAME} />
 
       <div>{children}</div>
