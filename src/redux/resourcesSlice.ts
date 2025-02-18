@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { ResourcesState } from './types';
 import { NewsResources } from '../core/dataProvider/dataProviderTypes';
-// import NYTMockData from '../NYTMockData.json'; you can uncomment this line to use mock data
+import NYTMockData from '../core/NYTMockData.json'; // you can uncomment this line to use mock data
 
 import type { SetDataPayload, SetErrorPayload, SetBulkParametersPayload, SetParameterPayload } from './types';
 import type { NewsApiArticleInterface, TheGuardianArticleInterface, NYTimesArticleInterface } from '@pages/FeedsPage/newsTypes';
@@ -16,7 +16,7 @@ const initialState: ResourcesState = {
     parameters: {
       page: 1,
       pageSize: 10,
-      q: 'software',
+      q: 'news',
     },
   },
   [NewsResources.TheGuardian]: {
@@ -63,6 +63,8 @@ const resourcesSlice = createSlice({
       state[resourceName].hasError = true;
       state[resourceName].isLoading = false;
 
+      state[resourceName].data = NYTMockData.response as any;
+      state[resourceName].isLoading = false;
       /*
        * you can uncomment these lines to use mock data 👇
 

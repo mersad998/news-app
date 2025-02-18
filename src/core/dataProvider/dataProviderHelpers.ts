@@ -6,24 +6,24 @@ import { type ApiKeyInformation, type GetBaseUrlByResourceName, type FetchDataOp
 export const getBaseUrlByResourceName: GetBaseUrlByResourceName = (resource) => {
   if (resource === NewsResources.NewsApi) {
     return {
-      baseUrl: process.env.NEWS_API_BASE_URL ?? '',
-      apiKeyValue: process.env.NEWS_API_API_KEY ?? '',
+      baseUrl: import.meta.env.VITE_NEWS_API_BASE_URL ?? '',
+      apiKeyValue: import.meta.env.VITE_NEWS_API_API_KEY ?? '',
       apiKeyName: 'apiKey',
     };
   }
 
   if (resource === NewsResources.TheGuardian) {
     return {
-      baseUrl: process.env.THE_GUARDIAN_BASE_URL ?? '',
-      apiKeyValue: process.env.THE_GUARDIAN_API_KEY ?? '',
+      baseUrl: import.meta.env.VITE_THE_GUARDIAN_BASE_URL ?? '',
+      apiKeyValue: import.meta.env.VITE_THE_GUARDIAN_API_KEY ?? '',
       apiKeyName: 'api-key',
     };
   }
 
   if (resource === NewsResources.NewYorkTimes) {
     return {
-      baseUrl: process.env.NY_TIMES_BASE_URL ?? '',
-      apiKeyValue: process.env.NY_TIMES_API_KEY ?? '',
+      baseUrl: import.meta.env.VITE_NY_TIMES_BASE_URL ?? '',
+      apiKeyValue: import.meta.env.VITE_NY_TIMES_API_KEY ?? '',
       apiKeyName: 'api-key',
     };
   }
