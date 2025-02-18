@@ -11,7 +11,8 @@ export type ApiKeyInformation = { key: string; value: string };
 
 export type GetBaseUrlByResourceName = (resource: NewsResources) => {
   baseUrl: string;
-  apiKey: ApiKeyInformation;
+  apiKeyName: string;
+  apiKeyValue: string;
 };
 
 export interface NewsApiParameters {

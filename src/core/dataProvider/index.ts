@@ -8,9 +8,9 @@ import type { ApiKeyInformation, FetchData } from './dataProviderTypes';
 
 const getDataFromApi: FetchData = async (payload, { dispatch }) => {
   const { resource, parameters, valueKeyName } = payload;
-  const { baseUrl, apiKey } = getBaseUrlByResourceName(resource);
+  const { baseUrl, apiKeyName, apiKeyValue } = getBaseUrlByResourceName(resource);
 
-  const apiKeyInformation = { [apiKey.key]: apiKey.value } as ApiKeyInformation;
+  const apiKeyInformation = { [apiKeyName]: apiKeyValue } as ApiKeyInformation;
   const queryParameters = createQueryParameters(parameters, apiKeyInformation);
 
   try {
