@@ -21,26 +21,31 @@ const SearchBar = ({ onResourceSelect, userCustomSorts }: any) => {
   return (
     <div className="flex flex-wrap items-center justify-between gap-4 p-4 bg-default-400/20 dark:bg-default-500/20 shadow-md rounded-lg mb-4">
       {/* Resource Selector */}
-      <Select
-        className="max-w-xs "
-        classNames={{
-          base: '',
-          trigger:
-            'border-none shadow-none h-10 font-normal text-white bg-default-400/20 dark:bg-default-600/20 hover:bg-default-400/80 dark:hover:bg-default-500/80',
-          popoverContent: 'bg-default-600 dark:bg-default-700 text-white border-none',
-        }}
-        label="Select Resources"
-        placeholder="Choose resources"
-        selectionMode="multiple"
-        selectedKeys={new Set(selectedResources)}
-        onSelectionChange={handleResourceChange as (keys: SharedSelection) => void}
-      >
-        {resources.map((resource) => (
-          <SelectItem key={resource.key} className="text-black">
-            {resource.label}
-          </SelectItem>
-        ))}
-      </Select>
+      <div className='flex'>
+        <label htmlFor={'resource-selector'} className="w-20 capitalize text-default-400/80 flex items-center mx-2">
+          Resources:
+        </label>
+        <Select
+          id="resource-selector"
+          className="min-w-72"
+          classNames={{
+            base: '',
+            trigger:
+              'border-none shadow-none h-10 font-normal text-white bg-default-400/20 dark:bg-default-600/20 hover:bg-default-400/80 dark:hover:bg-default-500/80',
+            popoverContent: 'bg-default-600 dark:bg-default-700 text-white border-none',
+          }}
+          placeholder="Choose resources"
+          selectionMode="multiple"
+          selectedKeys={new Set(selectedResources)}
+          onSelectionChange={handleResourceChange as (keys: SharedSelection) => void}
+        >
+          {resources.map((resource) => (
+            <SelectItem key={resource.key} className="text-black">
+              {resource.label}
+            </SelectItem>
+          ))}
+        </Select>
+      </div>
 
       {/* Advanced Search Button */}
       <Popover isOpen={isPopoverOpen} onClose={() => setIsPopoverOpen(false)} placement="bottom-end">

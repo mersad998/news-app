@@ -48,42 +48,32 @@ const HeaderView: FC<HeaderViewProps> = ({ title }) => {
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-3">
           <NavbarItem>
-            <Link color="foreground" className="text-inherit" href="#">
+            <Link color="foreground" className='text-default-200 text-bold' href="#">
               News
             </Link>
           </NavbarItem>
           <NavbarItem isActive>
-            <Link aria-current="page" color="primary" href="#">
+            <Link aria-current="page" className='text-default-400' href="#">
               Sport
             </Link>
           </NavbarItem>
           <NavbarItem isActive>
-            <Link aria-current="page" color="primary" href="#">
+            <Link aria-current="page" className='text-default-400' href="#">
               Business
             </Link>
           </NavbarItem>
           <NavbarItem isActive>
-            <Link aria-current="page" color="primary" href="#">
-              Innovation
-            </Link>
-          </NavbarItem>
-          <NavbarItem isActive>
-            <Link aria-current="page" color="primary" href="#">
-              Culture
-            </Link>
-          </NavbarItem>
-          <NavbarItem isActive>
-            <Link aria-current="page" color="primary" href="#">
+            <Link aria-current="page" className='text-default-400' href="#">
               Arts
             </Link>
           </NavbarItem>
           <NavbarItem isActive>
-            <Link aria-current="page" color="primary" href="#">
+            <Link aria-current="page" className='text-default-400' href="#">
               Travel
             </Link>
           </NavbarItem>
           <NavbarItem isActive>
-            <Link aria-current="page" color="primary" href="#">
+            <Link aria-current="page" className='text-default-400' href="#">
               Earth
             </Link>
           </NavbarItem>
@@ -111,25 +101,30 @@ const HeaderView: FC<HeaderViewProps> = ({ title }) => {
               as="button"
               className="transition-transform"
               color="primary"
-              name="Jason Hughes"
+              name="language"
               size="sm"
-              src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8Se-PUx6-Zc4LjJITb_7v1gAgoNAPiYenWpdYTXuKqpBBw85ErXAuALAiYLrMUGttYas&usqp=CAU"
             />
           </DropdownTrigger>
-          <DropdownMenu aria-label="Profile Actions" variant="flat" className="text-black">
-            <DropdownItem key="profile" className="h-14 gap-2">
-              <p className="font-semibold">Signed in as</p>
-              <p className="font-semibold">zoey@example.com</p>
-            </DropdownItem>
-            <DropdownItem key="settings">My Settings</DropdownItem>
-            <DropdownItem key="team_settings">Team Settings</DropdownItem>
-            <DropdownItem key="analytics">Analytics</DropdownItem>
-            <DropdownItem key="system">System</DropdownItem>
-            <DropdownItem key="configurations">Configurations</DropdownItem>
-            <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
-            <DropdownItem key="logout" color="danger">
-              Log Out
-            </DropdownItem>
+          <DropdownMenu aria-label="language" variant="flat" className="text-black">
+            <DropdownItem key="settings">English - EN</DropdownItem>
+            <DropdownItem key="team_settings">Deutsch - DE</DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
+        <Dropdown placement="bottom-end">
+          <DropdownTrigger>
+            <Avatar
+              isBordered
+              as="button"
+              className="transition-transform"
+              name="dark mode"
+              size="sm"
+              src="https://cdn2.iconfinder.com/data/icons/images-and-photography-2/24/light-mode-dark-light-512.png"
+            />
+          </DropdownTrigger>
+          <DropdownMenu aria-label="dark mode" variant="flat" className="text-black">
+            <DropdownItem key="settings">Dark</DropdownItem>
+            <DropdownItem key="team_settings">Light</DropdownItem>
           </DropdownMenu>
         </Dropdown>
       </NavbarContent>
