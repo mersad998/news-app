@@ -41,25 +41,50 @@ const SearchIcon = ({ size = 24, strokeWidth = 1.5, width, height, ...props }: a
 
 const HeaderView: FC<HeaderViewProps> = ({ title }) => {
   return (
-    <Navbar isBordered>
+    <Navbar isBordered className='bg-default-400/20 dark:bg-default-500/20'>
       <NavbarContent justify="start">
         <NavbarBrand className="mr-4">
           <p className="font-bold text-inherit">{title}</p>
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-3">
           <NavbarItem>
-            <Link color="foreground" href="#">
-              Features
+            <Link color="foreground" className="text-inherit" href="#">
+              News
             </Link>
           </NavbarItem>
           <NavbarItem isActive>
-            <Link aria-current="page" color="secondary" href="#">
-              Customers
+            <Link aria-current="page" color="primary" href="#">
+              Sport
             </Link>
           </NavbarItem>
-          <NavbarItem>
-            <Link color="foreground" href="#">
-              Integrations
+          <NavbarItem isActive>
+            <Link aria-current="page" color="primary" href="#">
+              Business
+            </Link>
+          </NavbarItem>
+          <NavbarItem isActive>
+            <Link aria-current="page" color="primary" href="#">
+              Innovation
+            </Link>
+          </NavbarItem>
+          <NavbarItem isActive>
+            <Link aria-current="page" color="primary" href="#">
+              Culture
+            </Link>
+          </NavbarItem>
+          <NavbarItem isActive>
+            <Link aria-current="page" color="primary" href="#">
+              Arts
+            </Link>
+          </NavbarItem>
+          <NavbarItem isActive>
+            <Link aria-current="page" color="primary" href="#">
+              Travel
+            </Link>
+          </NavbarItem>
+          <NavbarItem isActive>
+            <Link aria-current="page" color="primary" href="#">
+              Earth
             </Link>
           </NavbarItem>
         </NavbarContent>
@@ -85,7 +110,7 @@ const HeaderView: FC<HeaderViewProps> = ({ title }) => {
               isBordered
               as="button"
               className="transition-transform"
-              color="secondary"
+              color="primary"
               name="Jason Hughes"
               size="sm"
               src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
