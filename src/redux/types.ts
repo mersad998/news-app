@@ -1,11 +1,10 @@
 import { NYTimesArticleInterface, NewsApiArticleInterface, TheGuardianArticleInterface } from '@pages/FeedsPage/newsTypes';
-
 import {
   NewYorkTimesParameters,
   NewsApiParameters,
   NewsResources,
   TheGuardianParameters,
-} from '../core/dataProvider/dataProviderTypes';
+} from '@providers/dataProvider/dataProviderTypes';
 
 export interface ResourceState<T> {
   data: T | null;

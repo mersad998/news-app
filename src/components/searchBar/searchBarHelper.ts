@@ -1,4 +1,4 @@
-import { NewsResources } from '../../core/dataProvider/dataProviderTypes';
+import { NewsResources } from '@providers/dataProvider/dataProviderTypes';
 
 export const ITEM_HEIGHT = 48;
 export const ITEM_PADDING_TOP = 8;

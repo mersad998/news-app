@@ -1,7 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
-
-import AppLayout from '../layouts/AppLayout';
-import { FeedsPage } from '../pages/FeedsPage';
+import AppLayout from '@layouts/AppLayout';
+import { FeedsPage } from '@pages/FeedsPage';
 
 export const customRoutes = (
   <Routes>

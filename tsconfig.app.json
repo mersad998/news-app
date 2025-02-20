@@ -27,12 +27,13 @@
       "@components/*": ["components/*"],
       "@constants/*": ["constants/*"],
       "@pages/*": ["pages/*"],
-      "@providers/*": ["providers/*"],
-      "@store/*": ["store/*"],
-      "@globalTypes/*": ["types/index.ts"],
       "@utils/*": ["utils/*"],
-      "@assets/*": ["assets/*"],
-      "@hooks/*": ["hooks/*"]
+      "@hooks/*": ["hooks/*"],
+      "@contexts/*": ["contexts/*"],
+      "@layouts/*": ["layouts/*"],
+      "@routs/*": ["routs/*"],
+      "@redux/*": ["redux/*"],
+      "@providers/*": ["providers/*"]
     },
 
     "forceConsistentCasingInFileNames": true,

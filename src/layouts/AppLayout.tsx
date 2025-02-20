@@ -1,6 +1,5 @@
 import { Header } from '@components/Header';
-
-import { APP_NAME } from '../core/constants';
+import { APP_NAME } from '@constants/index';
 
 import type { FC, PropsWithChildren } from 'react';
 

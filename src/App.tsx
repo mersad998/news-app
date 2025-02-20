@@ -3,10 +3,10 @@ import { I18nextProvider } from 'react-i18next';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import useSettings from '@hooks/useSettings';
+import { customRoutes } from '@routs/index';
 
-import i18n from './core/i18n';
+import i18n from './providers/i18n';
 import SettingsContext from './contexts/settingsContext';
-import { customRoutes } from './core/routes';
 import { store as reduxStore } from './redux/store';
 
 const App: FC = () => {

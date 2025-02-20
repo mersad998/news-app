@@ -4,6 +4,7 @@ import { Pagination } from '@heroui/react';
 import { FeedCard } from '@components/feedCard';
 import { SearchBar } from '@components/searchBar';
 import { FeaturedSlider } from '@components/FeaturedSlider';
+import { shuffleArray } from '@utils/shuffleArray';
 
 import type { FeedsPageViewProps } from './feedsPageTypes';
 
@@ -18,8 +19,9 @@ const FeedsPageView: FC<FeedsPageViewProps> = ({
   const { t } = useTranslation();
 
   // Separate featured articles (first 3 with images) from the rest
-  const featuredArticles = articles.slice(0, 3).filter((article) => article.images.length);
-  const regularArticles = articles.slice(3);
+  const shuffledArticles = shuffleArray(articles);
+  const featuredArticles = shuffledArticles.filter((article) => article.images.length).slice(0, 3);
+  const regularArticles = shuffledArticles.slice(3);
 
   return (
     <div className="max-w-7xl mx-auto py-6 px-4">

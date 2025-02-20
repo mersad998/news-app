@@ -1,8 +1,7 @@
 import { type FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@heroui/react';
-
-import { NewsResources } from '../../core/dataProvider/dataProviderTypes';
+import { NewsResources } from '@providers/dataProvider/dataProviderTypes';
 
 import type { FeedCardProps } from './feedCard.type';
 
@@ -11,14 +10,14 @@ const FeedCardView: FC<FeedCardProps> = ({ article }) => {
   const { t } = useTranslation();
 
   const resourceLogo = {
-    [NewsResources.NewsApi]: '/na.png',
-    [NewsResources.TheGuardian]: '/tg.png',
-    [NewsResources.NewYorkTimes]: '/nt.png',
+    [NewsResources.NewsApi as string]: '/na.png',
+    [NewsResources.TheGuardian as string]: '/tg.png',
+    [NewsResources.NewYorkTimes as string]: '/nt.png',
   }[resource];
 
   return (
     <div className="bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 flex flex-col">
-      {images[0] && <img src={images[0]} alt={title} className="w-full h-56 object-cover" />}
+      {images[0] && <img src={images[0]} alt={title} className="w-full h-56 object-contain" />}
 
       <div className="p-4 flex flex-col flex-grow">
         <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-300 text-sm mb-2">

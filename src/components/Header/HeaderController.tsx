@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
+import SettingsContext from '@contexts/settingsContext';
 
-import SettingsContext from '../../contexts/settingsContext';
 import HeaderView from './HeaderView';
 
 import type { FC } from 'react';

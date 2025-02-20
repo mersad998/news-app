@@ -2,16 +2,15 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { AnyAction } from 'redux';
-
+import { fetchData } from '@providers/dataProvider';
+import { ReduxState } from '@pages/FeedsPage/feedsPageTypes';
+import { setBulkParameters, setParameter } from '@redux/resourcesSlice';
 import {
   NewYorkTimesParameters,
   NewsApiParameters,
   NewsResources,
   TheGuardianParameters,
-} from '../core/dataProvider/dataProviderTypes';
-import { fetchData } from '../core/dataProvider';
-import { setBulkParameters, setParameter } from '../redux/resourcesSlice';
-import { ReduxState } from '../pages/FeedsPage/feedsPageTypes';
+} from '@providers/dataProvider/dataProviderTypes';
 
 type SetBulkQueryParameters = (parameters: { query?: string; page?: number; perPage?: number }) => void;
 type SetQueryParameterToResource = (

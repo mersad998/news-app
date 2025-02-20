@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
-
-import { readFromLocalStorage, writeToLocalStorage } from '../helpers';
+import { readFromLocalStorage } from '@utils/readFromLocalStorage';
+import { writeToLocalStorage } from '@utils/writeToLocalStorage';
 
 const App_Settings = 'App_Settings';
 

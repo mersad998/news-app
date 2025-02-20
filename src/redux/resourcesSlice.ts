@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { NewsResources } from '@providers/dataProvider/dataProviderTypes';
+import NYTMockData from '@constants/NYTMockData.json'; // you can uncomment this line to use mock data
 
 import { ResourcesState } from './types';
-import { NewsResources } from '../core/dataProvider/dataProviderTypes';
-import NYTMockData from '../core/NYTMockData.json'; // you can uncomment this line to use mock data
 
 import type { SetDataPayload, SetErrorPayload, SetBulkParametersPayload, SetParameterPayload } from './types';
 import type { NewsApiArticleInterface, TheGuardianArticleInterface, NYTimesArticleInterface } from '@pages/FeedsPage/newsTypes';

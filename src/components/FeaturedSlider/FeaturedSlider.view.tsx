@@ -8,7 +8,7 @@ const FeaturedSliderView: FC<FeaturedSliderViewProps> = ({ featuredArticles, cur
       {featuredArticles.map((article, index) => (
         <div
           key={index}
-          className={`${index === currentIndex ? 'block' : 'hidden'} w-full h-64 md:h-96 bg-cover bg-center rounded-lg shadow-md dark:shadow-lg`}
+          className={`${index === currentIndex ? 'block' : 'hidden'} w-full h-64 md:h-96 bg-contain bg-center rounded-lg shadow-md dark:shadow-lg`}
           style={{
             backgroundImage: `url(${article.images[0] || '/default-image.jpg'})`,
           }}

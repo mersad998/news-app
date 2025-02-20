@@ -1,9 +1,9 @@
 import { FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Select, SelectItem, Button, Popover, PopoverTrigger, PopoverContent, SharedSelection } from '@heroui/react';
+import { convertToArray } from '@utils/convertToArray';
 
 import AdvancedSearchPopover from './AdvancedSearchPopover';
-import { convertToArray } from '../../helpers';
 import { SearchBarViewProps } from './searchBarTypes';
 
 const resources = [

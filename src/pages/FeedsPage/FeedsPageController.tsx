@@ -1,9 +1,9 @@
 import { memo, type FC, ChangeEvent, useCallback } from 'react';
 import useFetchData from '@hooks/useFetchData';
 import usePrepareData from '@hooks/usePrepareData';
+import { NewsResources } from '@providers/dataProvider/dataProviderTypes';
 
 import { debounce } from './feedsPageHelper';
-import { NewsResources } from '../../core/dataProvider/dataProviderTypes';
 import FeedsPageView from './FeedsPageView';
 
 const FeedsPageController: FC = () => {
