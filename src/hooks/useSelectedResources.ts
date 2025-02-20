@@ -5,15 +5,15 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { allSelectableResources } from './usePrepareData';
 
-export const useSelectedResources = () => {
+export const useSelectedResources = (): { selectedResources: string[]; onResourceSelect: (value: string[]) => void } => {
   const dispatch: ThunkDispatch<void, void, AnyAction> = useDispatch();
 
-  const selectedResources = useSelector<{ resources: ReduxState }>((state) => {
+  const selectedResources = useSelector<{ resources: ReduxState }, string[]>((state) => {
     return Object.keys(state.resources)
       .map((resource) => {
-        return (state.resources as any)[resource]['isActive'] ? resource : '';
+        return (state.resources as Record<string, { isActive: boolean }>)[resource].isActive ? resource : '';
       })
-      .filter((res) => res);
+      .filter((resourceName) => resourceName);
   });
 
   const onResourceSelect = (value: string[]): void => {

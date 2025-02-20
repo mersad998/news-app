@@ -11,6 +11,7 @@ import {
   NewsResources,
   TheGuardianParameters,
 } from '@providers/dataProvider/dataProviderTypes';
+import { useSelectedResources } from './useSelectedResources';
 
 type SetBulkQueryParameters = (parameters: { query?: string; page?: number; perPage?: number }) => void;
 type SetQueryParameterToResource = (
@@ -25,6 +26,7 @@ interface UseFetchData {
 
 const useFetchData = (): UseFetchData => {
   const dispatch: ThunkDispatch<void, void, AnyAction> = useDispatch();
+  const { selectedResources } = useSelectedResources();
 
   // gather all parameters from redux store in separate variables for each resource
   const newsApiCurrentParameters = useSelector<{ resources: ReduxState }>(
@@ -39,6 +41,8 @@ const useFetchData = (): UseFetchData => {
 
   // define three functions to fetch data from each resource
   const fetchNewsApiDada = (): void => {
+    if (!selectedResources.includes(NewsResources.NewsApi)) return;
+
     dispatch(
       fetchData({
         resource: NewsResources.NewsApi,
@@ -47,6 +51,8 @@ const useFetchData = (): UseFetchData => {
     );
   };
   const fetchTheGuardianDada = (): void => {
+    if (!selectedResources.includes(NewsResources.TheGuardian)) return;
+
     dispatch(
       fetchData({
         resource: NewsResources.TheGuardian,
@@ -56,6 +62,8 @@ const useFetchData = (): UseFetchData => {
     );
   };
   const fetchNewYorkTimesDada = (): void => {
+    if (!selectedResources.includes(NewsResources.NewYorkTimes)) return;
+
     dispatch(
       fetchData({
         resource: NewsResources.NewYorkTimes,

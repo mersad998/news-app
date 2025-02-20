@@ -18,10 +18,17 @@ const FeedsPageView: FC<FeedsPageViewProps> = ({
 }) => {
   const { t } = useTranslation();
 
-  // Separate featured articles (first 3 with images) from the rest
-  const shuffledArticles = shuffleArray(articles);
-  const featuredArticles = shuffledArticles.filter((article) => article.images.length).slice(0, 3);
-  const regularArticles = shuffledArticles.slice(3);
+  // separate articles with and without image
+  const articlesWithPicture = articles.filter((article) => article.images.length);
+  const articlesWithOutPicture = articles.filter((article) => !article.images.length);
+
+  // separate slider articles and shuffle the other ones
+  const featuredArticles = articlesWithPicture.slice(0, 3);
+  const topNews = articlesWithPicture.slice(3, 6);
+
+  // mix articles with a specific ordet
+  const shuffledArticles = shuffleArray([...articlesWithPicture.slice(6), ...articlesWithOutPicture]);
+  const sortedNews = [...topNews, ...shuffledArticles];
 
   return (
     <div className="max-w-7xl mx-auto py-6 px-4">
@@ -32,9 +39,9 @@ const FeedsPageView: FC<FeedsPageViewProps> = ({
       {featuredArticles.length > 0 && <FeaturedSlider featuredArticles={featuredArticles} />}
 
       {/* Articles Grid or No Data Message */}
-      {regularArticles.length ? (
+      {sortedNews.length ? (
         <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          {regularArticles.map((article, index) => (
+          {sortedNews.map((article, index) => (
             <FeedCard key={index} article={article} />
           ))}
         </div>
@@ -46,7 +53,7 @@ const FeedsPageView: FC<FeedsPageViewProps> = ({
       )}
 
       {/* Pagination */}
-      {Boolean(regularArticles.length) && (
+      {Boolean(sortedNews.length) && (
         <div className="flex justify-center mt-8">
           <Pagination total={totalCount} onChange={onPageChange} className="mt-4" page={currentPage} />
         </div>

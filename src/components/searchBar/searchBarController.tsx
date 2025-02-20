@@ -7,7 +7,6 @@ import type { SearchBarControllerProps } from './searchBarTypes';
 
 const SearchBarController: FC<SearchBarControllerProps> = ({ onSearch, userCustomSorts }) => {
   const { selectedResources, onResourceSelect: handleResourceSelect } = useSelectedResources();
-  console.log('selectedResources: ', selectedResources);
 
   return (
     <SearchBarView
