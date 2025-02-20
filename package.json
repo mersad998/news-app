@@ -10,13 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@heroui/checkbox": "^2.3.9",
-    "@heroui/popover": "^2.3.10",
-    "@heroui/radio": "^2.3.9",
     "@heroui/react": "^2.6.14",
     "@heroui/system": "^2.4.7",
     "@heroui/theme": "^2.4.6",
-    "@iconify/react": "^5.2.0",
     "@reduxjs/toolkit": "^2.5.1",
     "axios": "^1.6.2",
     "framer-motion": "^12.0.1",

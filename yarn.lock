@@ -761,7 +761,7 @@
     "@react-aria/utils" "3.26.0"
     "@react-types/shared" "3.26.0"
 
-"@heroui/checkbox@2.3.9", "@heroui/checkbox@^2.3.9":
+"@heroui/checkbox@2.3.9":
   version "2.3.9"
   resolved "https://registry.yarnpkg.com/@heroui/checkbox/-/checkbox-2.3.9.tgz#9cb92b6dc8e0c561c941f2146cce152bc9531fba"
   integrity sha512-R5b2L4BKZ1BSTBJVPl4Ipe/4cG7UacnYPb3BUfTJWrkcrbTxJ+VCkcZQ7s8n9FJpJlp6VWky0LY1E1+UXPcWPQ==
@@ -1069,7 +1069,7 @@
     "@react-aria/utils" "3.26.0"
     scroll-into-view-if-needed "3.0.10"
 
-"@heroui/popover@2.3.10", "@heroui/popover@^2.3.10":
+"@heroui/popover@2.3.10":
   version "2.3.10"
   resolved "https://registry.yarnpkg.com/@heroui/popover/-/popover-2.3.10.tgz#2fcd3661402048081bf189f749295743d8f9dac4"
   integrity sha512-qswvCUxkHGWbXuBQYDl5yCeqyzAgYXTXsPzc95KPVy+QoVFFQaHvvRkgjqK1rfJOZcH6cJpyO45eT3tJi3M/IQ==
@@ -1104,7 +1104,7 @@
     "@react-aria/utils" "3.26.0"
     "@react-types/progress" "3.5.8"
 
-"@heroui/radio@2.3.9", "@heroui/radio@^2.3.9":
+"@heroui/radio@2.3.9":
   version "2.3.9"
   resolved "https://registry.yarnpkg.com/@heroui/radio/-/radio-2.3.9.tgz#7e4a6f6ceac5e1613d61aab2ae1498a599c5e892"
   integrity sha512-ExmEz4obI485TyNnscFJMADHY8cC9CqALg/3aUXHstyPYFIchLeYMCiJQHs2+o76rk8nNJML+t+5SpdQrQ44WA==
@@ -1606,18 +1606,6 @@
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/retry/-/retry-0.4.1.tgz#9a96ce501bc62df46c4031fbd970e3cc6b10f07b"
   integrity sha512-c7hNEllBlenFTHBky65mhq8WD2kbN9Q6gk0bTk8lSBvc554jpXSkST1iePudpt7+A/AQvuHs9EMqjHDXMY1lrA==
-
-"@iconify/react@^5.2.0":
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/@iconify/react/-/react-5.2.0.tgz#c525afc322edba4152aa81e42e22a71a7c31a62b"
-  integrity sha512-7Sdjrqq3fkkQNks9SY3adGC37NQTHsBJL2PRKlQd455PoDi9s+Es9AUTY+vGLFOYs5yO9w9yCE42pmxCwG26WA==
-  dependencies:
-    "@iconify/types" "^2.0.0"
-
-"@iconify/types@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@iconify/types/-/types-2.0.0.tgz#ab0e9ea681d6c8a1214f30cd741fe3a20cc57f57"
-  integrity sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==
 
 "@internationalized/date@3.6.0":
   version "3.6.0"

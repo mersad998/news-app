@@ -1,13 +1,5 @@
 import { useState } from 'react';
-import {
-  Select,
-  SelectItem,
-  Button,
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-  SharedSelection,
-} from '@heroui/react';
+import { Select, SelectItem, Button, Popover, PopoverTrigger, PopoverContent, SharedSelection } from '@heroui/react';
 import AdvancedSearchPopover from './AdvancedSearchPopover';
 
 const resources = [
@@ -30,10 +22,7 @@ const SearchBar = ({ onResourceSelect, userCustomSorts }: any) => {
     <div className="flex flex-wrap items-center justify-between gap-4 p-4 bg-default-400/20 dark:bg-default-500/20 shadow-md rounded-lg mb-4">
       {/* Resource Selector */}
       <div className="flex">
-        <label
-          htmlFor="resource-selector"
-          className="w-20 capitalize text-default-400/80 flex items-center mx-2"
-        >
+        <label htmlFor="resource-selector" className="w-20 capitalize flex items-center mx-2">
           Resources:
         </label>
         <Select
@@ -43,8 +32,7 @@ const SearchBar = ({ onResourceSelect, userCustomSorts }: any) => {
             base: '',
             trigger:
               'border-none shadow-none h-10 font-normal text-black dark:text-white bg-white dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600',
-            popoverContent:
-              'bg-white text-black dark:bg-gray-800 dark:text-white border-none',
+            popoverContent: 'bg-white text-black dark:bg-gray-800 dark:text-white border-none',
           }}
           placeholder="Choose resources"
           selectionMode="multiple"
@@ -61,11 +49,7 @@ const SearchBar = ({ onResourceSelect, userCustomSorts }: any) => {
       </div>
 
       {/* Advanced Search Button */}
-      <Popover
-        isOpen={isPopoverOpen}
-        onClose={() => setIsPopoverOpen(false)}
-        placement="bottom-end"
-      >
+      <Popover isOpen={isPopoverOpen} onClose={() => setIsPopoverOpen(false)} placement="bottom-end">
         <PopoverTrigger>
           <Button
             startContent={<span>⚙️</span>}

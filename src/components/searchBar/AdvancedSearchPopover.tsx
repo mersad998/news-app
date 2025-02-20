@@ -18,7 +18,7 @@ const AdvancedSearchPopover: FC<any> = ({ userCustomSorts, onSearch }) => {
     <div className="p-4 space-y-4">
       {Object.keys(filters).map((filterKey) => (
         <div key={filterKey} className="flex items-center space-x-2">
-          <label htmlFor={filterKey} className="w-20 capitalize text-black">
+          <label htmlFor={filterKey} className="w-20 capitalize ">
             {filterKey}:
           </label>
           <Input

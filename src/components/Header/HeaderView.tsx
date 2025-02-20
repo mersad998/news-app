@@ -42,7 +42,7 @@ const HeaderView: FC<HeaderViewProps> = ({ title }) => {
         <NavbarBrand className="mr-4">
           <p className="font-bold text-inherit">{title}</p>
         </NavbarBrand>
-        <NavbarContent className="hidden sm:flex gap-3">
+        <NavbarContent className="hidden md:flex gap-3">
           {['News', 'Sport', 'Business', 'Arts', 'Travel', 'Earth'].map((item) => (
             <NavbarItem key={item}>
               <Link
