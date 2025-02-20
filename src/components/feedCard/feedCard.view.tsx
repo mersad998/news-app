@@ -16,22 +16,22 @@ const FeedCardView: FC<FeedCardViewProps> = (props) => {
   const { t } = useTranslation();
 
   return (
-    <div className="bg-white shadow-md rounded-lg overflow-hidden border border-gray-200">
+    <div className="bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 flex flex-col">
       {images[0] && <img src={images[0]} alt={title} className="w-full h-56 object-cover" />}
 
-      <div className="p-4">
-        <div className="flex items-center space-x-2 text-gray-600 text-sm mb-2">
+      <div className="p-4 flex flex-col flex-grow">
+        <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-300 text-sm mb-2">
           <img src={resourceLogo} alt={sourceName} className="w-6 h-6" />
           <span>
             {sourceName} / {author}
           </span>
         </div>
-        <h3 className="text-lg font-semibold text-gray-900 mb-2">{title}</h3>
-        <p className="text-gray-700 text-sm mb-4">{description}</p>
-        <div className="flex justify-between items-center text-gray-500 text-xs">
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{title}</h3>
+        <p className="text-gray-700 dark:text-gray-400 text-sm mb-4 flex-grow">{description}</p>
+        <div className="flex justify-between items-center text-gray-500 dark:text-gray-300 text-xs mt-auto">
           <span>{date}</span>
           <Button
-            className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
+            className="bg-blue-600 dark:bg-blue-500 text-white dark:text-gray-100 px-4 py-2 rounded-md hover:bg-blue-700 dark:hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
             onClick={() => window.open(url, '_blank')}
           >
             {t('feeds.continueToFullPage')}

@@ -3,4 +3,16 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+
+  /* Apply different background and text colors based on theme */
+  background-color: var(--background-color-dark); /* Default dark mode */
+  color: var(--text-color-dark); /* Default text color for dark mode */
+}
+
+/* Light Mode Styles */
+@media (prefers-color-scheme: light) {
+  #root {
+    background-color: var(--background-color-light);
+    color: var(--text-color-light);
+  }
 }

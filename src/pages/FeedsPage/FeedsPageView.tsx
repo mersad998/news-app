@@ -23,10 +23,11 @@ const FeedsPageView: FC<FeedsPageViewProps> = (props) => {
       {/* Featured News Slider */}
       {featuredArticles.length > 0 && <FeaturedSlider featuredArticles={featuredArticles} />}
 
+      {/* No Articles Message */}
       {!regularArticles.length ? (
         <div className="text-center py-10">
-          <h2 className="text-2xl font-bold text-yellow-500">Oops!</h2>
-          <p className="text-gray-500">{t('feeds.noData')}</p>
+          <h2 className="text-2xl font-bold text-yellow-500">{t('feeds.noDataHeading')}</h2>
+          <p className="text-gray-500 dark:text-gray-300">{t('feeds.noData')}</p>
         </div>
       ) : (
         <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
@@ -35,6 +36,8 @@ const FeedsPageView: FC<FeedsPageViewProps> = (props) => {
           ))}
         </div>
       )}
+
+      {/* Pagination Component */}
       {!!regularArticles.length && (
         <div className="flex justify-center mt-8">
           <Pagination total={totalCount} onChange={onPageChange} className="mt-4" />

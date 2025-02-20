@@ -11,8 +11,28 @@ export default {
       fontFamily: {
         custom: ['IranSans', 'sans-serif'],
       },
+
+      colors: {
+        background: {
+          light: '#F5F5F5',
+          dark: '#121212',
+        },
+        card: {
+          light: '#FFFFFF',
+          dark: '#1E1E1E',
+        },
+        text: {
+          light: '#212121',
+          dark: '#E0E0E0',
+        },
+        primary: {
+          light: '#6200EE',
+          dark: '#BB86FC',
+        },
+      },
     },
   },
+
   darkMode: ['class', '[data-theme="dark"]'],
   plugins: [heroui()],
 };

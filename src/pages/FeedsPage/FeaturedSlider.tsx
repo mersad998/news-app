@@ -1,4 +1,3 @@
-// FeaturedSlider.tsx
 import { FC, useState, useEffect } from 'react';
 
 import type { DisplayableArticle } from './feedsPageTypes';
@@ -22,7 +21,7 @@ const FeaturedSlider: FC<FeaturedSliderProps> = ({ featuredArticles }) => {
       {featuredArticles.map((article, index) => (
         <div
           key={index}
-          className={`${index === currentIndex ? 'block' : 'hidden'} w-full h-64 md:h-96 bg-cover bg-center rounded-lg shadow-md`}
+          className={`${index === currentIndex ? 'block' : 'hidden'} w-full h-64 md:h-96 bg-cover bg-center rounded-lg shadow-md dark:shadow-lg`}
           style={{
             backgroundImage: `url(${article.images[0] || '/default-image.jpg'})`,
           }}
@@ -33,16 +32,19 @@ const FeaturedSlider: FC<FeaturedSliderProps> = ({ featuredArticles }) => {
           </div>
         </div>
       ))}
+
       {/* Navigation Buttons */}
       <button
         onClick={() => setCurrentIndex(currentIndex === 0 ? featuredArticles.length - 1 : currentIndex - 1)}
-        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white p-2 rounded-full"
+        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white p-2 rounded-full dark:bg-gray-700"
+        aria-label="Previous slide"
       >
         &lt;
       </button>
       <button
         onClick={() => setCurrentIndex(currentIndex === featuredArticles.length - 1 ? 0 : currentIndex + 1)}
-        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white p-2 rounded-full"
+        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white p-2 rounded-full dark:bg-gray-700"
+        aria-label="Next slide"
       >
         &gt;
       </button>
