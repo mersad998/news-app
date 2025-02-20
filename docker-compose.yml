@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  web:
+    image: mersadmgl/news-app:2
+    working_dir: /app
+
+    ports:
+      - '4173:4173'
+
+    restart: unless-stopped
+    tty: true

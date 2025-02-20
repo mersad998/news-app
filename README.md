@@ -59,6 +59,6 @@ To run the app in development mode, follow these steps:
 Pull the News Aggregator Docker image from Docker Hub:
 
 ```bash
-docker pull mersadmgl/news-app:1
-docker run -p 4173:4173 mersadmgl/news-app:1
+docker pull mersadmgl/news-app:2
+docker run -p 4173:4173 mersadmgl/news-app:2
 ```
