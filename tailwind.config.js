@@ -13,6 +13,6 @@ export default {
       },
     },
   },
-  darkMode: 'class',
+  darkMode: ['class', '[data-theme="dark"]'],
   plugins: [heroui()],
 };

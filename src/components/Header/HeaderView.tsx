@@ -1,3 +1,4 @@
+import { useContext, type FC } from 'react';
 import {
   Navbar,
   NavbarBrand,
@@ -5,78 +6,54 @@ import {
   NavbarItem,
   Link,
   Input,
-  DropdownItem,
-  DropdownTrigger,
   Dropdown,
+  DropdownTrigger,
   DropdownMenu,
+  DropdownItem,
   Avatar,
 } from '@heroui/react';
-
-import type { FC } from 'react';
+import SettingsContext from '../../contexts/settingsContext';
 import type { HeaderViewProps } from './HeaderTypes';
 
-const SearchIcon = ({ size = 24, strokeWidth = 1.5, width, height, ...props }: any) => {
-  return (
-    <svg
-      aria-hidden="true"
-      fill="none"
-      focusable="false"
-      height={height || size}
-      role="presentation"
-      viewBox="0 0 24 24"
-      width={width || size}
-      {...props}
-    >
-      <path
-        d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={strokeWidth}
-      />
-      <path d="M22 22L20 20" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={strokeWidth} />
-    </svg>
-  );
-};
+const SearchIcon = ({ size = 24, strokeWidth = 1.5, width, height, ...props }: any) => (
+  <svg
+    aria-hidden="true"
+    fill="none"
+    focusable="false"
+    height={height || size}
+    role="presentation"
+    viewBox="0 0 24 24"
+    width={width || size}
+    {...props}
+  >
+    <path
+      d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={strokeWidth}
+    />
+    <path d="M22 22L20 20" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={strokeWidth} />
+  </svg>
+);
 
 const HeaderView: FC<HeaderViewProps> = ({ title }) => {
+  const { colorMode, language } = useContext(SettingsContext);
+
   return (
-    <Navbar isBordered className='bg-default-400/20 dark:bg-default-500/20'>
+    <Navbar isBordered className="bg-default-400/20 dark:bg-default-500/20">
       <NavbarContent justify="start">
         <NavbarBrand className="mr-4">
           <p className="font-bold text-inherit">{title}</p>
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-3">
-          <NavbarItem>
-            <Link color="foreground" className='text-default-200 text-bold' href="#">
-              News
-            </Link>
-          </NavbarItem>
-          <NavbarItem isActive>
-            <Link aria-current="page" className='text-default-400' href="#">
-              Sport
-            </Link>
-          </NavbarItem>
-          <NavbarItem isActive>
-            <Link aria-current="page" className='text-default-400' href="#">
-              Business
-            </Link>
-          </NavbarItem>
-          <NavbarItem isActive>
-            <Link aria-current="page" className='text-default-400' href="#">
-              Arts
-            </Link>
-          </NavbarItem>
-          <NavbarItem isActive>
-            <Link aria-current="page" className='text-default-400' href="#">
-              Travel
-            </Link>
-          </NavbarItem>
-          <NavbarItem isActive>
-            <Link aria-current="page" className='text-default-400' href="#">
-              Earth
-            </Link>
-          </NavbarItem>
+          {['News', 'Sport', 'Business', 'Arts', 'Travel', 'Earth'].map((item) => (
+            <NavbarItem key={item}>
+              <Link color="foreground" className="text-default-200 font-bold" href="#">
+                {item}
+              </Link>
+            </NavbarItem>
+          ))}
         </NavbarContent>
       </NavbarContent>
 
@@ -94,37 +71,49 @@ const HeaderView: FC<HeaderViewProps> = ({ title }) => {
           type="search"
         />
 
+        {/* Language Toggle */}
         <Dropdown placement="bottom-end">
           <DropdownTrigger>
             <Avatar
               isBordered
               as="button"
               className="transition-transform"
-              color="primary"
-              name="language"
               size="sm"
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8Se-PUx6-Zc4LjJITb_7v1gAgoNAPiYenWpdYTXuKqpBBw85ErXAuALAiYLrMUGttYas&usqp=CAU"
+              src={`https://flagcdn.com/w40/${language.selectedLanguage === 'en' ? 'gb' : 'de'}.png`}
             />
           </DropdownTrigger>
           <DropdownMenu aria-label="language" variant="flat" className="text-black">
-            <DropdownItem key="settings">English - EN</DropdownItem>
-            <DropdownItem key="team_settings">Deutsch - DE</DropdownItem>
+            <DropdownItem key="en" onClick={language.toggleLanguage}>
+              English - EN
+            </DropdownItem>
+            <DropdownItem key="de" onClick={language.toggleLanguage}>
+              Deutsch - DE
+            </DropdownItem>
           </DropdownMenu>
         </Dropdown>
+
+        {/* Theme Toggle */}
         <Dropdown placement="bottom-end">
           <DropdownTrigger>
             <Avatar
               isBordered
               as="button"
               className="transition-transform"
-              name="dark mode"
               size="sm"
-              src="https://cdn2.iconfinder.com/data/icons/images-and-photography-2/24/light-mode-dark-light-512.png"
+              src={
+                document.documentElement.getAttribute('data-theme') === 'dark'
+                  ? 'https://cdn-icons-png.flaticon.com/512/6714/6714974.png'
+                  : 'https://cdn-icons-png.flaticon.com/512/6714/6714975.png'
+              }
             />
           </DropdownTrigger>
-          <DropdownMenu aria-label="dark mode" variant="flat" className="text-black">
-            <DropdownItem key="settings">Dark</DropdownItem>
-            <DropdownItem key="team_settings">Light</DropdownItem>
+          <DropdownMenu aria-label="theme" variant="flat" className="text-black">
+            <DropdownItem key="dark" onClick={colorMode.toggleColorMode}>
+              Dark Mode
+            </DropdownItem>
+            <DropdownItem key="light" onClick={colorMode.toggleColorMode}>
+              Light Mode
+            </DropdownItem>
           </DropdownMenu>
         </Dropdown>
       </NavbarContent>
