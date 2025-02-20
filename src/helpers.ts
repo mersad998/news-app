@@ -31,3 +31,5 @@ export const readFromLocalStorage = <T>(key: string): T | null => {
 export const removeFromLocalStorage = (key: string): void => {
   localStorage.removeItem(key);
 };
+
+export const convertToArray = (keys: Set<string>): string[] => Array.from(keys);

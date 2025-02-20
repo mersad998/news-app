@@ -1,36 +1,32 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Input } from '@heroui/react';
+import { useFilters } from '@hooks/useFilters';
 
-const AdvancedSearchPopover: FC<any> = ({ userCustomSorts, onSearch }) => {
+import FilterInput from './FilterInput';
+
+interface AdvancedSearchPopoverProps {
+  userCustomSorts: any;
+  onSearch: (filters: any) => void;
+}
+
+const AdvancedSearchPopover: FC<AdvancedSearchPopoverProps> = ({ userCustomSorts, onSearch }) => {
   const { t } = useTranslation();
-  const [filters, setFilters] = useState<any>({
-    author: userCustomSorts.author || '',
-    category: userCustomSorts.category || '',
-    sources: userCustomSorts.sources || '',
-  });
 
-  const handleFilterChange = (e) => {
-    const { id, value } = e.target;
-    setFilters((prev: any): any => ({ ...prev, [id]: value }));
-    onSearch({ ...filters, [id]: value });
-  };
+  const { filters, handleFilterChange } = useFilters(
+    { author: userCustomSorts.author || '', category: userCustomSorts.category || '', sources: userCustomSorts.sources || '' },
+    onSearch,
+  );
 
   return (
     <div className="p-4 space-y-4">
       {Object.keys(filters).map((filterKey) => (
-        <div key={filterKey} className="flex items-center space-x-2">
-          <label htmlFor={filterKey} className="w-20 capitalize ">
-            {t(`search.${filterKey}`)}:
-          </label>
-          <Input
-            id={filterKey}
-            value={filters[filterKey]}
-            onChange={handleFilterChange}
-            placeholder={t(`search.enter${filterKey.charAt(0).toUpperCase() + filterKey.slice(1)}`)}
-            className="flex-1"
-          />
-        </div>
+        <FilterInput
+          key={filterKey}
+          id={filterKey}
+          value={filters[filterKey]}
+          onChange={handleFilterChange}
+          label={t(`search.${filterKey}`)}
+        />
       ))}
     </div>
   );

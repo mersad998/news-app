@@ -4,16 +4,17 @@ import { Button } from '@heroui/react';
 
 import { NewsResources } from '../../core/dataProvider/dataProviderTypes';
 
-import type { FeedCardViewProps } from './feedCard.type';
+import type { FeedCardProps } from './feedCard.type';
 
-const FeedCardView: FC<FeedCardViewProps> = (props) => {
-  const { article } = props;
+const FeedCardView: FC<FeedCardProps> = ({ article }) => {
   const { author, date, description, images, resource, sourceName, title, url } = article;
-
-  const resourceLogo =
-    resource === NewsResources.NewsApi ? '/na.png' : resource === NewsResources.TheGuardian ? '/tg.png' : '/nt.png';
-
   const { t } = useTranslation();
+
+  const resourceLogo = {
+    [NewsResources.NewsApi]: '/na.png',
+    [NewsResources.TheGuardian]: '/tg.png',
+    [NewsResources.NewYorkTimes]: '/nt.png',
+  }[resource];
 
   return (
     <div className="bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 flex flex-col">
@@ -28,6 +29,7 @@ const FeedCardView: FC<FeedCardViewProps> = (props) => {
         </div>
         <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{title}</h3>
         <p className="text-gray-700 dark:text-gray-400 text-sm mb-4 flex-grow">{description}</p>
+
         <div className="flex justify-between items-center text-gray-500 dark:text-gray-300 text-xs mt-auto">
           <span>{date}</span>
           <Button

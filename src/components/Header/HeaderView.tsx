@@ -1,28 +1,10 @@
-import { useContext, type FC } from 'react';
-import { useTranslation } from 'react-i18next';
-import {
-  Navbar,
-  NavbarBrand,
-  NavbarContent,
-  NavbarItem,
-  Link,
-  Input,
-  Avatar,
-} from '@heroui/react';
-import SettingsContext from '../../contexts/settingsContext';
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Input, Avatar } from '@heroui/react';
+
+import type { FC } from 'react';
 import type { HeaderViewProps } from './HeaderTypes';
 
-const SearchIcon = ({ size = 24, strokeWidth = 1.5, width, height, ...props }: any) => (
-  <svg
-    aria-hidden="true"
-    fill="none"
-    focusable="false"
-    height={height || size}
-    role="presentation"
-    viewBox="0 0 24 24"
-    width={width || size}
-    {...props}
-  >
+const SearchIcon: FC<{ size: number; strokeWidth?: number }> = ({ size = 24, strokeWidth = 1.5 }) => (
+  <svg aria-hidden="true" fill="none" focusable="false" height={size} role="presentation" viewBox="0 0 24 24" width={size}>
     <path
       d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z"
       stroke="currentColor"
@@ -34,10 +16,7 @@ const SearchIcon = ({ size = 24, strokeWidth = 1.5, width, height, ...props }: a
   </svg>
 );
 
-const HeaderView: FC<HeaderViewProps> = ({ title }) => {
-  const { colorMode, language } = useContext(SettingsContext);
-  const { t } = useTranslation();
-
+const HeaderView: FC<HeaderViewProps> = ({ title, t, selectedLanguage, toggleLanguage, toggleTheme }) => {
   return (
     <Navbar isBordered className="bg-default-400/20 dark:bg-default-500/20 text-black dark:text-white">
       <NavbarContent justify="start">
@@ -70,19 +49,19 @@ const HeaderView: FC<HeaderViewProps> = ({ title }) => {
         />
 
         {/* Language Toggle Button */}
-        <button onClick={language.toggleLanguage} className="ml-4">
+        <button onClick={toggleLanguage} className="ml-4">
           <Avatar
             isBordered
             as="button"
             className="transition-transform"
             size="sm"
-            src={`https://flagcdn.com/w40/${language.selectedLanguage === 'en' ? 'gb' : 'de'}.png`}
+            src={`https://flagcdn.com/w40/${selectedLanguage === 'en' ? 'gb' : 'de'}.png`}
             alt={t('header.language')}
           />
         </button>
 
         {/* Theme Toggle Button */}
-        <button onClick={colorMode.toggleColorMode} className="ml-4">
+        <button onClick={toggleTheme} className="ml-4">
           <Avatar
             isBordered
             as="button"

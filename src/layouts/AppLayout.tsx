@@ -8,8 +8,7 @@ const AppLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <div className="w-full">
       <Header title={APP_NAME} />
-
-      <div>{children}</div>
+      <main>{children}</main>
     </div>
   );
 };

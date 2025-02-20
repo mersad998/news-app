@@ -1,12 +1,9 @@
-import { type FC } from 'react';
-
 import FeedCardView from './feedCard.view';
 
-import type { FeedCardControllerProps } from './feedCard.type';
+import type { FC } from 'react';
+import type { FeedCardProps } from './feedCard.type';
 
-const FeedCardController: FC<FeedCardControllerProps> = (props) => {
-  const { article } = props;
-
+const FeedCardController: FC<FeedCardProps> = ({ article }) => {
   return <FeedCardView article={article} />;
 };
 

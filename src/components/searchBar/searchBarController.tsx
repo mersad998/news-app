@@ -1,28 +1,18 @@
-import { useState, type FC } from 'react';
+import { FC } from 'react';
+import { useSelectedResources } from '@hooks/useSelectedResources';
 
-import { allSelectableResources } from './searchBarHelper';
 import SearchBarView from './searchBarView';
+import { allSelectableResources } from './searchBarHelper';
 
 import type { SearchBarControllerProps } from './searchBarTypes';
 
-const SearchBarController: FC<SearchBarControllerProps> = (props) => {
-  const { onSearch, onResourceSelect, userCustomSorts } = props;
-
-  const [selectedResources, setSelectedResources] = useState<string[]>(allSelectableResources);
-
-  // limit the articles locally by selected resources
-  const _onResourceSelect = (event: any): void => {
-    const value = event.target.value;
-    const valueAsArray = typeof value === 'string' ? value.split(',') : value;
-
-    setSelectedResources(valueAsArray);
-    onResourceSelect(valueAsArray);
-  };
+const SearchBarController: FC<SearchBarControllerProps> = ({ onSearch, userCustomSorts }) => {
+  const { selectedResources, onResourceSelect: handleResourceSelect } = useSelectedResources(allSelectableResources);
 
   return (
     <SearchBarView
       onSearch={onSearch}
-      onResourceSelect={_onResourceSelect}
+      onResourceSelect={handleResourceSelect}
       selectedResources={selectedResources}
       userCustomSorts={userCustomSorts}
     />

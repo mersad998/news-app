@@ -35,13 +35,11 @@ export interface ReduxState {
 export interface FeedsPageViewProps {
   articles: DisplayableArticle[];
   totalCount: number;
-  userCustomSorts: UserCustomSort;
+  userCustomSorts: UserCustomSort; // Ensure this type is correct
 
   onSearch: (event: ChangeEvent<HTMLInputElement>) => void;
   onResourceSelect: (selectedResources: string[]) => void;
-
   onPageChange: (page: number) => void;
-  onPageSizeChange: (pageSize: number) => void;
 }
 
 export interface DisplayableArticle {

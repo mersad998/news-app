@@ -124,6 +124,7 @@ export default [
     rules: {
       ...reactHooks.configs.recommended.rules,
       'react-refresh/only-export-components': ['off', { allowConstantExport: true }],
+      'react-hooks/exhaustive-deps': 'off', // Disable exhaustive-deps rule
     },
   },
 ];

@@ -1,8 +1,5 @@
-import { DisplayableArticle } from '@pages/FeedsPage/feedsPageTypes';
+import type { DisplayableArticle } from '@pages/FeedsPage/feedsPageTypes';
 
-export interface FeedCardControllerProps {
-  article: DisplayableArticle;
-}
-export interface FeedCardViewProps {
+export interface FeedCardProps {
   article: DisplayableArticle;
 }
