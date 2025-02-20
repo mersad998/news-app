@@ -1,4 +1,5 @@
 import { useContext, type FC } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   Navbar,
   NavbarBrand,
@@ -35,6 +36,7 @@ const SearchIcon = ({ size = 24, strokeWidth = 1.5, width, height, ...props }: a
 
 const HeaderView: FC<HeaderViewProps> = ({ title }) => {
   const { colorMode, language } = useContext(SettingsContext);
+  const { t } = useTranslation();
 
   return (
     <Navbar isBordered className="bg-default-400/20 dark:bg-default-500/20 text-black dark:text-white">
@@ -43,14 +45,10 @@ const HeaderView: FC<HeaderViewProps> = ({ title }) => {
           <p className="font-bold text-inherit">{title}</p>
         </NavbarBrand>
         <NavbarContent className="hidden md:flex gap-3">
-          {['News', 'Sport', 'Business', 'Arts', 'Travel', 'Earth'].map((item) => (
-            <NavbarItem key={item}>
-              <Link
-                color="foreground"
-                className="font-bold text-gray-900 dark:text-white"
-                href="#"
-              >
-                {item}
+          {['news', 'sport', 'business', 'arts', 'travel', 'earth'].map((key) => (
+            <NavbarItem key={key}>
+              <Link color="foreground" className="font-bold text-gray-900 dark:text-white" href="#">
+                {t(`header.${key}`)}
               </Link>
             </NavbarItem>
           ))}
@@ -65,7 +63,7 @@ const HeaderView: FC<HeaderViewProps> = ({ title }) => {
             input: 'text-small',
             inputWrapper: 'h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20',
           }}
-          placeholder="Type to search..."
+          placeholder={t('header.search')}
           size="sm"
           startContent={<SearchIcon size={18} />}
           type="search"
@@ -79,7 +77,7 @@ const HeaderView: FC<HeaderViewProps> = ({ title }) => {
             className="transition-transform"
             size="sm"
             src={`https://flagcdn.com/w40/${language.selectedLanguage === 'en' ? 'gb' : 'de'}.png`}
-            alt={`Current language: ${language.selectedLanguage === 'en' ? 'English' : 'Deutsch'}`}
+            alt={t('header.language')}
           />
         </button>
 
@@ -95,7 +93,7 @@ const HeaderView: FC<HeaderViewProps> = ({ title }) => {
                 ? 'https://cdn-icons-png.flaticon.com/512/6714/6714975.png' // Moon icon
                 : 'https://cdn-icons-png.flaticon.com/512/1164/1164954.png' // Sun icon
             }
-            alt="Toggle theme"
+            alt={t('header.theme')}
           />
         </button>
       </NavbarContent>

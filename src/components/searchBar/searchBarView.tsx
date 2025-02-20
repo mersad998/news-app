@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Select, SelectItem, Button, Popover, PopoverTrigger, PopoverContent, SharedSelection } from '@heroui/react';
 import AdvancedSearchPopover from './AdvancedSearchPopover';
 
@@ -9,6 +10,7 @@ const resources = [
 ];
 
 const SearchBar = ({ onResourceSelect, userCustomSorts }: any) => {
+  const { t } = useTranslation();
   const [selectedResources, setSelectedResources] = useState<string[]>([]);
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
 
@@ -23,7 +25,7 @@ const SearchBar = ({ onResourceSelect, userCustomSorts }: any) => {
       {/* Resource Selector */}
       <div className="flex">
         <label htmlFor="resource-selector" className="w-20 capitalize flex items-center mx-2">
-          Resources:
+          {t('search.resources')}:
         </label>
         <Select
           id="resource-selector"
@@ -34,11 +36,11 @@ const SearchBar = ({ onResourceSelect, userCustomSorts }: any) => {
               'border-none shadow-none h-10 font-normal text-black dark:text-white bg-white dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600',
             popoverContent: 'bg-white text-black dark:bg-gray-800 dark:text-white border-none',
           }}
-          placeholder="Choose resources"
+          placeholder={t('search.chooseResources')}
           selectionMode="multiple"
           selectedKeys={new Set(selectedResources)}
           onSelectionChange={handleResourceChange as (keys: SharedSelection) => void}
-          aria-label="Select resources"
+          aria-label={t('search.selectResources')}
         >
           {resources.map((resource) => (
             <SelectItem key={resource.key} className="text-black dark:text-white">
@@ -55,9 +57,9 @@ const SearchBar = ({ onResourceSelect, userCustomSorts }: any) => {
             startContent={<span>⚙️</span>}
             className="bg-transparent border-none text-default-500 dark:text-white"
             onClick={() => setIsPopoverOpen((prev) => !prev)}
-            aria-label="Customize feeds"
+            aria-label={t('search.customizeFeeds')}
           >
-            Customize Your Feeds
+            {t('search.customizeFeeds')}
           </Button>
         </PopoverTrigger>
         <PopoverContent className="bg-white text-black dark:bg-gray-800 dark:text-white shadow-md rounded-lg">

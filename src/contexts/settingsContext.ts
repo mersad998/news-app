@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 
-const SettingsContext = createContext({
+const SettingsContext = createContext<any>({
   colorMode: {
     toggleColorMode: () => console.warn('color mode context error'),
     themeMode: 'light', // or 'dark'

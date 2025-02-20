@@ -1,7 +1,9 @@
 import { FC, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Input } from '@heroui/react';
 
 const AdvancedSearchPopover: FC<any> = ({ userCustomSorts, onSearch }) => {
+  const { t } = useTranslation();
   const [filters, setFilters] = useState<any>({
     author: userCustomSorts.author || '',
     category: userCustomSorts.category || '',
@@ -19,13 +21,13 @@ const AdvancedSearchPopover: FC<any> = ({ userCustomSorts, onSearch }) => {
       {Object.keys(filters).map((filterKey) => (
         <div key={filterKey} className="flex items-center space-x-2">
           <label htmlFor={filterKey} className="w-20 capitalize ">
-            {filterKey}:
+            {t(`search.${filterKey}`)}:
           </label>
           <Input
             id={filterKey}
             value={filters[filterKey]}
             onChange={handleFilterChange}
-            placeholder={`Enter ${filterKey}...`}
+            placeholder={t(`search.enter${filterKey.charAt(0).toUpperCase() + filterKey.slice(1)}`)}
             className="flex-1"
           />
         </div>

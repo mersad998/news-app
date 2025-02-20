@@ -35,7 +35,7 @@ const useSettings = (): UseSettings => {
         setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
       },
     }),
-    []
+    [],
   );
 
   const languageSettings = useMemo(
@@ -44,7 +44,7 @@ const useSettings = (): UseSettings => {
         setLanguage((prevLanguage) => (prevLanguage === 'en' ? 'de' : 'en'));
       },
     }),
-    []
+    [],
   );
 
   return { colorMode, language: languageSettings, selectedLanguage: language, mode };
