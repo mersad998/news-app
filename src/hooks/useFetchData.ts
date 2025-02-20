@@ -11,6 +11,7 @@ import {
   NewsResources,
   TheGuardianParameters,
 } from '@providers/dataProvider/dataProviderTypes';
+
 import { useSelectedResources } from './useSelectedResources';
 
 type SetBulkQueryParameters = (parameters: { query?: string; page?: number; perPage?: number }) => void;

@@ -1,6 +1,6 @@
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Input, Avatar } from '@heroui/react';
 
-import type { FC } from 'react';
+import type { ChangeEvent, FC } from 'react';
 import type { HeaderViewProps } from './HeaderTypes';
 
 const SearchIcon: FC<{ size: number; strokeWidth?: number }> = ({ size = 24, strokeWidth = 1.5 }) => (
@@ -26,7 +26,15 @@ const HeaderView: FC<HeaderViewProps> = ({ title, t, selectedLanguage, toggleLan
         <NavbarContent className="hidden md:flex gap-3">
           {['news', 'sport', 'business', 'arts', 'travel', 'earth'].map((key) => (
             <NavbarItem key={key}>
-              <Link color="foreground" className="font-bold text-gray-900 dark:text-white" href="#">
+              <Link
+                color="foreground"
+                className="font-bold text-gray-900 dark:text-white"
+                href={`#${key}`}
+                onClick={() => {
+                  // mock search event
+                  onSearch({ target: { value: key } } as ChangeEvent<HTMLInputElement>);
+                }}
+              >
                 {t(`header.${key}`)}
               </Link>
             </NavbarItem>
