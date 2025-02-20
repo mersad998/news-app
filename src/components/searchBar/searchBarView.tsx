@@ -2,24 +2,24 @@ import { FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Select, SelectItem, Button, Popover, PopoverTrigger, PopoverContent, SharedSelection } from '@heroui/react';
 import { convertToArray } from '@utils/convertToArray';
+import { NewsResources } from '@providers/dataProvider/dataProviderTypes';
 
 import AdvancedSearchPopover from './AdvancedSearchPopover';
 import { SearchBarViewProps } from './searchBarTypes';
 
 const resources = [
-  { key: 'newsapi', label: 'NewsAPI' },
-  { key: 'guardian', label: 'The Guardian' },
-  { key: 'nytimes', label: 'NY Times' },
+  { key: NewsResources.NewsApi, label: 'NewsAPI' },
+  { key: NewsResources.TheGuardian, label: 'The Guardian' },
+  { key: NewsResources.NewYorkTimes, label: 'NY Times' },
 ];
 
-const SearchBarView: FC<SearchBarViewProps> = ({ onResourceSelect, onSearch, userCustomSorts }) => {
+const SearchBarView: FC<SearchBarViewProps> = ({ onResourceSelect, onSearch, userCustomSorts, selectedResources }) => {
   const { t } = useTranslation();
-  const [selectedResources, setSelectedResources] = useState<string[]>([]);
+
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
 
   const handleResourceChange = (keys: Set<string>) => {
     const selectedKeysArray = convertToArray(keys);
-    setSelectedResources(selectedKeysArray);
     onResourceSelect(selectedKeysArray);
   };
 
@@ -33,13 +33,13 @@ const SearchBarView: FC<SearchBarViewProps> = ({ onResourceSelect, onSearch, use
           id="resource-selector"
           className="min-w-72"
           selectionMode="multiple"
-          selectedKeys={new Set(selectedResources)}
+          selectedKeys={selectedResources}
           onSelectionChange={handleResourceChange as (keys: SharedSelection) => void}
           placeholder={t('search.chooseResources')}
         >
-          {resources.map((resource) => (
-            <SelectItem key={resource.key}>{resource.label}</SelectItem>
-          ))}
+          {resources.map((resource) => {
+            return <SelectItem key={resource.key}>{resource.label}</SelectItem>;
+          })}
         </Select>
       </div>
 

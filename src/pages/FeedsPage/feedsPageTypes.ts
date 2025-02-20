@@ -13,6 +13,7 @@ export interface ReduxState {
   [NewsResources.NewsApi]?: {
     data: NewsApiArticleInterface | null;
     hasError: boolean;
+    isActive: boolean;
     isLoading: boolean;
     parameters: NewsApiParameters;
   };
@@ -21,6 +22,7 @@ export interface ReduxState {
     data: TheGuardianArticleInterface | null;
     hasError: boolean;
     isLoading: boolean;
+    isActive: boolean;
     parameters: TheGuardianParameters;
   };
 
@@ -28,6 +30,7 @@ export interface ReduxState {
     data: NYTimesArticleInterface | null;
     hasError: boolean;
     isLoading: boolean;
+    isActive: boolean;
     parameters: NewYorkTimesParameters;
   };
 }
@@ -36,9 +39,8 @@ export interface FeedsPageViewProps {
   articles: DisplayableArticle[];
   totalCount: number;
   userCustomSorts: UserCustomSort; // Ensure this type is correct
-
+  currentPage: number;
   onSearch: (event: ChangeEvent<HTMLInputElement>) => void;
-  onResourceSelect: (selectedResources: string[]) => void;
   onPageChange: (page: number) => void;
 }
 

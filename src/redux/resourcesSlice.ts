@@ -4,7 +4,13 @@ import NYTMockData from '@constants/NYTMockData.json'; // you can uncomment this
 
 import { ResourcesState } from './types';
 
-import type { SetDataPayload, SetErrorPayload, SetBulkParametersPayload, SetParameterPayload } from './types';
+import type {
+  SetDataPayload,
+  SetErrorPayload,
+  SetBulkParametersPayload,
+  SetParameterPayload,
+  ChangeActivationPayload,
+} from './types';
 import type { NewsApiArticleInterface, TheGuardianArticleInterface, NYTimesArticleInterface } from '@pages/FeedsPage/newsTypes';
 
 //  initial data
@@ -13,6 +19,7 @@ const initialState: ResourcesState = {
     data: null,
     hasError: false,
     isLoading: true,
+    isActive: true,
     parameters: {
       page: 1,
       pageSize: 10,
@@ -23,6 +30,7 @@ const initialState: ResourcesState = {
     data: null,
     hasError: false,
     isLoading: true,
+    isActive: true,
     parameters: {
       page: 1,
       perPage: 10,
@@ -32,6 +40,7 @@ const initialState: ResourcesState = {
     data: null,
     hasError: false,
     isLoading: true,
+    isActive: false,
     parameters: {
       page: 1,
       pageSize: 10,
@@ -78,6 +87,11 @@ const resourcesSlice = createSlice({
       state[resource].parameters = { ...state[resource].parameters, ...parameters };
     },
 
+    changeActivation: (state, action: PayloadAction<ChangeActivationPayload>) => {
+      const { resource, isActive } = action.payload;
+      state[resource].isActive = isActive;
+    },
+
     setBulkParameters: (state, action: PayloadAction<SetBulkParametersPayload>) => {
       state[NewsResources.NewsApi].parameters = { ...state.NEWS_API.parameters, ...action.payload[NewsResources.NewsApi] };
       state[NewsResources.TheGuardian].parameters = {
@@ -93,7 +107,7 @@ const resourcesSlice = createSlice({
 });
 
 // export actions
-export const { setData, setError, setParameter, setBulkParameters } = resourcesSlice.actions;
+export const { setData, setError, setParameter, setBulkParameters, changeActivation } = resourcesSlice.actions;
 
 // export reducer
 export default resourcesSlice.reducer;

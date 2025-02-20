@@ -68,7 +68,6 @@ const useFetchData = (): UseFetchData => {
   // call fetch functions when parameters are changed
   useEffect(() => {
     fetchNewsApiDada();
-    console.log('fetchNewsApiDada: ');
   }, [
     newsApiCurrentParameters.q,
     newsApiCurrentParameters.page,
@@ -78,7 +77,6 @@ const useFetchData = (): UseFetchData => {
   ]);
   useEffect(() => {
     fetchTheGuardianDada();
-    console.log('fetchTheGuardianDada: ');
   }, [
     theGuardianCurrentParameters.q,
     theGuardianCurrentParameters.page,
@@ -88,7 +86,6 @@ const useFetchData = (): UseFetchData => {
   ]);
   useEffect(() => {
     fetchNewYorkTimesDada();
-    console.log('fetchNewYorkTimesDada: ');
   }, [
     newYorkTimesCurrentParameters.q,
     newYorkTimesCurrentParameters.page,

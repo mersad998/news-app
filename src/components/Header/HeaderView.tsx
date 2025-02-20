@@ -16,7 +16,7 @@ const SearchIcon: FC<{ size: number; strokeWidth?: number }> = ({ size = 24, str
   </svg>
 );
 
-const HeaderView: FC<HeaderViewProps> = ({ title, t, selectedLanguage, toggleLanguage, toggleTheme }) => {
+const HeaderView: FC<HeaderViewProps> = ({ title, t, selectedLanguage, toggleLanguage, toggleTheme, onSearch }) => {
   return (
     <Navbar isBordered className="bg-default-400/20 dark:bg-default-500/20 text-black dark:text-white">
       <NavbarContent justify="start">
@@ -46,6 +46,7 @@ const HeaderView: FC<HeaderViewProps> = ({ title, t, selectedLanguage, toggleLan
           size="sm"
           startContent={<SearchIcon size={18} />}
           type="search"
+          onChange={onSearch}
         />
 
         {/* Language Toggle Button */}

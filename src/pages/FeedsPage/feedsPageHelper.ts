@@ -66,9 +66,9 @@ export const mergeArticles = (data: {
   newYorkTimesData: ReduxState[NewsResources.NewYorkTimes];
 }): DisplayableArticle[] => {
   return [
-    ...extractFromNewsApi(data.newsApiData?.data).slice(0, 10),
-    ...extractFromTheGuardian(data.theGuardianData?.data),
-    ...extractFromNYTimes(data.newYorkTimesData?.data),
+    ...(data.newsApiData?.isActive ? extractFromNewsApi(data.newsApiData?.data).slice(0, 10) : []),
+    ...(data.theGuardianData?.isActive ? extractFromTheGuardian(data.theGuardianData?.data) : []),
+    ...(data.newYorkTimesData?.isActive ? extractFromNYTimes(data.newYorkTimesData?.data) : []),
   ];
 };
 

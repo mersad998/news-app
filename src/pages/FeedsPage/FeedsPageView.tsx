@@ -12,9 +12,9 @@ const FeedsPageView: FC<FeedsPageViewProps> = ({
   articles,
   totalCount,
   userCustomSorts,
+  currentPage,
   onSearch,
   onPageChange,
-  onResourceSelect,
 }) => {
   const { t } = useTranslation();
 
@@ -26,7 +26,7 @@ const FeedsPageView: FC<FeedsPageViewProps> = ({
   return (
     <div className="max-w-7xl mx-auto py-6 px-4">
       {/* Search & Filters */}
-      <SearchBar userCustomSorts={userCustomSorts} onSearch={onSearch} onResourceSelect={onResourceSelect} />
+      <SearchBar userCustomSorts={userCustomSorts} onSearch={onSearch} />
 
       {/* Featured News Slider */}
       {featuredArticles.length > 0 && <FeaturedSlider featuredArticles={featuredArticles} />}
@@ -48,7 +48,7 @@ const FeedsPageView: FC<FeedsPageViewProps> = ({
       {/* Pagination */}
       {Boolean(regularArticles.length) && (
         <div className="flex justify-center mt-8">
-          <Pagination total={totalCount} onChange={onPageChange} className="mt-4" />
+          <Pagination total={totalCount} onChange={onPageChange} className="mt-4" page={currentPage} />
         </div>
       )}
     </div>

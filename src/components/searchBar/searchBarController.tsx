@@ -2,18 +2,18 @@ import { FC } from 'react';
 import { useSelectedResources } from '@hooks/useSelectedResources';
 
 import SearchBarView from './searchBarView';
-import { allSelectableResources } from './searchBarHelper';
 
 import type { SearchBarControllerProps } from './searchBarTypes';
 
 const SearchBarController: FC<SearchBarControllerProps> = ({ onSearch, userCustomSorts }) => {
-  const { selectedResources, onResourceSelect: handleResourceSelect } = useSelectedResources(allSelectableResources);
+  const { selectedResources, onResourceSelect: handleResourceSelect } = useSelectedResources();
+  console.log('selectedResources: ', selectedResources);
 
   return (
     <SearchBarView
       onSearch={onSearch}
       onResourceSelect={handleResourceSelect}
-      selectedResources={selectedResources}
+      selectedResources={selectedResources as string[]}
       userCustomSorts={userCustomSorts}
     />
   );

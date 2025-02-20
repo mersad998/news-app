@@ -11,6 +11,7 @@ export interface ResourceState<T> {
   hasError: boolean;
   isLoading: boolean;
   parameters: NewsApiParameters | TheGuardianParameters | NewYorkTimesParameters;
+  isActive: boolean;
 }
 
 export interface ResourcesState {
@@ -37,4 +38,8 @@ export interface SetBulkParametersPayload {
 export interface SetParameterPayload {
   resource: NewsResources.NewsApi | NewsResources.TheGuardian | NewsResources.NewYorkTimes;
   parameters: Partial<NewsApiParameters | TheGuardianParameters | NewYorkTimesParameters>;
+}
+export interface ChangeActivationPayload {
+  resource: NewsResources.NewsApi | NewsResources.TheGuardian | NewsResources.NewYorkTimes;
+  isActive: boolean;
 }

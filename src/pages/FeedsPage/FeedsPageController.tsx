@@ -1,14 +1,21 @@
 import { memo, type FC, ChangeEvent, useCallback } from 'react';
 import useFetchData from '@hooks/useFetchData';
 import usePrepareData from '@hooks/usePrepareData';
-import { NewsResources } from '@providers/dataProvider/dataProviderTypes';
+import { NewsApiParameters, NewsResources } from '@providers/dataProvider/dataProviderTypes';
+import { useSelector } from 'react-redux';
 
 import { debounce } from './feedsPageHelper';
 import FeedsPageView from './FeedsPageView';
 
+import type { ReduxState } from './feedsPageTypes';
+
 const FeedsPageController: FC = () => {
   const { setBulkQueryParameters, setQueryParameterToResource } = useFetchData();
-  const { data, isLoading, totalCount, userCustomSorts, onResourceSelect } = usePrepareData();
+  const { data, isLoading, totalCount, userCustomSorts } = usePrepareData();
+
+  const currentPage = useSelector<{ resources: ReduxState }>(
+    (state) => state.resources[NewsResources.NewsApi]?.parameters?.page ?? 1,
+  ) as NewsApiParameters['page'];
 
   // Handle search input changes with debounce
   const onSearch = useCallback(
@@ -50,7 +57,7 @@ const FeedsPageController: FC = () => {
       userCustomSorts={userCustomSorts}
       onSearch={onSearch}
       onPageChange={onPageChange}
-      onResourceSelect={onResourceSelect}
+      currentPage={currentPage}
     />
   );
 };
