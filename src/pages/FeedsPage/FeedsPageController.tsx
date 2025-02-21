@@ -8,6 +8,7 @@ import { debounce } from './feedsPageHelper';
 import FeedsPageView from './FeedsPageView';
 
 import type { ReduxState } from './feedsPageTypes';
+import FeedsLoadingSkeleton from './FeedsPage.loading';
 
 const FeedsPageController: FC = () => {
   const { setBulkQueryParameters, setQueryParameterToResource } = useFetchData();
@@ -48,7 +49,7 @@ const FeedsPageController: FC = () => {
     [setBulkQueryParameters],
   );
 
-  if (isLoading) return <span>Loading...</span>;
+  if (isLoading) return <FeedsLoadingSkeleton />;
 
   return (
     <FeedsPageView

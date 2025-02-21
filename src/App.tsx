@@ -4,10 +4,10 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import useSettings from '@hooks/useSettings';
 import { customRoutes } from '@routs/index';
-
-import i18n from './providers/i18n';
-import SettingsContext from './contexts/settingsContext';
-import { store as reduxStore } from './redux/store';
+import FeedsLoadingSkeleton from '@pages/FeedsPage/FeedsPage.loading';
+import i18n from '@providers/i18n';
+import SettingsContext from '@contexts/settingsContext';
+import { store as reduxStore } from '@redux/store';
 
 const App: FC = () => {
   const { colorMode, language, selectedLanguage, mode } = useSettings();
@@ -29,7 +29,7 @@ const App: FC = () => {
     <Provider store={reduxStore}>
       <SettingsContext.Provider value={settingsContextValue}>
         <I18nextProvider i18n={i18n}>
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<FeedsLoadingSkeleton />}>
             <BrowserRouter>{customRoutes}</BrowserRouter>
           </Suspense>
         </I18nextProvider>
