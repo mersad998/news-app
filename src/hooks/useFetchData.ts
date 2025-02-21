@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { AnyAction } from 'redux';
 import { fetchData } from '@providers/DataProvider';
-import { ReduxState } from '@pages/FeedsPage/feedsPageTypes';
+import { ResourcesReduxState } from '@pages/FeedsPage/feedsPageTypes';
 import { setBulkParameters, setParameter } from '@redux/resourcesSlice';
 import {
   NewYorkTimesParameters,
@@ -30,13 +30,13 @@ const useFetchData = (): UseFetchData => {
   const { selectedResources } = useSelectedResources();
 
   // gather all parameters from redux store in separate variables for each resource
-  const newsApiCurrentParameters = useSelector<{ resources: ReduxState }>(
+  const newsApiCurrentParameters = useSelector<{ resources: ResourcesReduxState }>(
     (state) => state.resources[NewsResources.NewsApi]?.parameters,
   ) as NewsApiParameters;
-  const theGuardianCurrentParameters = useSelector<{ resources: ReduxState }>(
+  const theGuardianCurrentParameters = useSelector<{ resources: ResourcesReduxState }>(
     (state) => state.resources[NewsResources.TheGuardian]?.parameters,
   ) as TheGuardianParameters;
-  const newYorkTimesCurrentParameters = useSelector<{ resources: ReduxState }>(
+  const newYorkTimesCurrentParameters = useSelector<{ resources: ResourcesReduxState }>(
     (state) => state.resources[NewsResources.NewYorkTimes]?.parameters,
   ) as NewYorkTimesParameters;
 
@@ -47,7 +47,7 @@ const useFetchData = (): UseFetchData => {
     dispatch(
       fetchData({
         resource: NewsResources.NewsApi,
-        parameters: newsApiCurrentParameters as NewsApiParameters | undefined,
+        parameters: { ...newsApiCurrentParameters, q: newsApiCurrentParameters.q || 'news' } as NewsApiParameters | undefined,
       }),
     );
   };

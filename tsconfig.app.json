@@ -29,7 +29,6 @@
       "@pages/*": ["pages/*"],
       "@utils/*": ["utils/*"],
       "@hooks/*": ["hooks/*"],
-      "@contexts/*": ["contexts/*"],
       "@layouts/*": ["layouts/*"],
       "@routs/*": ["routs/*"],
       "@redux/*": ["redux/*"],

@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { DisplayableArticle, ReduxState } from '@pages/FeedsPage/feedsPageTypes';
+import { DisplayableArticle, ResourcesReduxState } from '@pages/FeedsPage/feedsPageTypes';
 import { NewsResources } from '@providers/DataProvider/DataProvider.types';
 import { mergeArticles, sortFeeds } from '@pages/FeedsPage/FeedsPage.helper';
 
@@ -19,15 +19,15 @@ export const allSelectableResources = [NewsResources.NewsApi, NewsResources.TheG
 
 const usePrepareData = (): UsePrepareData => {
   // gather all data from redux store in separate variables
-  const newsApiData = useSelector<{ resources: ReduxState }>(
+  const newsApiData = useSelector<{ resources: ResourcesReduxState }>(
     (state) => state.resources[NewsResources.NewsApi],
-  ) as ReduxState[NewsResources.NewsApi];
-  const theGuardianData = useSelector<{ resources: ReduxState }>(
+  ) as ResourcesReduxState[NewsResources.NewsApi];
+  const theGuardianData = useSelector<{ resources: ResourcesReduxState }>(
     (state) => state.resources[NewsResources.TheGuardian],
-  ) as ReduxState[NewsResources.TheGuardian];
-  const newYorkTimesData = useSelector<{ resources: ReduxState }>(
+  ) as ResourcesReduxState[NewsResources.TheGuardian];
+  const newYorkTimesData = useSelector<{ resources: ResourcesReduxState }>(
     (state) => state.resources[NewsResources.NewYorkTimes],
-  ) as ReduxState[NewsResources.NewYorkTimes];
+  ) as ResourcesReduxState[NewsResources.NewYorkTimes];
 
   // extract user custom sorts from redux
   const userCustomSorts: UserCustomSort = {

@@ -8,7 +8,7 @@ import {
 import type { UserCustomSort } from '@hooks/usePrepareData';
 import type { NewsApiArticleInterface, NYTimesArticleInterface, TheGuardianArticleInterface } from './newsTypes';
 
-export interface ReduxState {
+export interface ResourcesReduxState {
   [NewsResources.NewsApi]?: {
     data: NewsApiArticleInterface | null;
     hasError: boolean;

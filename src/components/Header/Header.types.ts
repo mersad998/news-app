@@ -6,9 +6,9 @@ export interface HeaderControllerProps {
 
 export interface HeaderViewProps {
   title: string;
-  t: (key: string) => string; // Translation function
   selectedLanguage: string;
+  selectedTheme: string;
   toggleLanguage: () => void;
-  onSearch: (event: ChangeEvent<HTMLInputElement>) => void;
   toggleTheme: () => void;
+  onSearch: (event: ChangeEvent<HTMLInputElement>) => void;
 }

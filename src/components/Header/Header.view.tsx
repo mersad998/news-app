@@ -1,4 +1,5 @@
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Input, Avatar } from '@heroui/react';
+import { useTranslation } from 'react-i18next';
 
 import type { ChangeEvent, FC } from 'react';
 import type { HeaderViewProps } from './Header.types';
@@ -16,7 +17,9 @@ const SearchIcon: FC<{ size: number; strokeWidth?: number }> = ({ size = 24, str
   </svg>
 );
 
-const HeaderView: FC<HeaderViewProps> = ({ title, t, selectedLanguage, toggleLanguage, toggleTheme, onSearch }) => {
+const HeaderView: FC<HeaderViewProps> = ({ title, selectedLanguage, selectedTheme, toggleLanguage, toggleTheme, onSearch }) => {
+  const { t } = useTranslation();
+
   return (
     <Navbar isBordered className="bg-default-400/20 dark:bg-default-500/20 text-black dark:text-white">
       <NavbarContent justify="start">
@@ -64,7 +67,7 @@ const HeaderView: FC<HeaderViewProps> = ({ title, t, selectedLanguage, toggleLan
             as="button"
             className="transition-transform"
             size="sm"
-            src={`https://flagcdn.com/w40/${selectedLanguage === 'en' ? 'gb' : 'de'}.png`}
+            src={`https://flagcdn.com/w40/${selectedLanguage === 'en' ? 'de' : 'gb'}.png`}
             alt={t('header.language')}
           />
         </button>
@@ -77,9 +80,9 @@ const HeaderView: FC<HeaderViewProps> = ({ title, t, selectedLanguage, toggleLan
             className="transition-transform"
             size="sm"
             src={
-              document.documentElement.getAttribute('data-theme') === 'dark'
-                ? 'https://cdn-icons-png.flaticon.com/512/6714/6714975.png' // Moon icon
-                : 'https://cdn-icons-png.flaticon.com/512/1164/1164954.png' // Sun icon
+              selectedTheme === 'dark'
+                ? 'https://cdn-icons-png.flaticon.com/512/1164/1164954.png' // Sun icon
+                : 'https://cdn-icons-png.flaticon.com/512/6714/6714975.png' // Moon icon
             }
             alt={t('header.theme')}
           />

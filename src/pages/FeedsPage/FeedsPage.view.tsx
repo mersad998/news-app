@@ -12,7 +12,7 @@ const FeedsPageView: FC<FeedsPageViewProps> = ({ articles, totalCount, userCusto
   const { t } = useTranslation();
 
   // separate articles with and without image
-  const articlesWithPicture = articles.filter((article) => article.images.length);
+  const articlesWithPicture = shuffleArray(articles.filter((article) => article.images.length));
   const articlesWithOutPicture = articles.filter((article) => !article.images.length);
 
   // separate slider articles and shuffle the other ones

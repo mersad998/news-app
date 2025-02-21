@@ -8,13 +8,13 @@ import FeedsLoadingSkeleton from './FeedsPage.loading';
 import { debounce } from './FeedsPage.helper';
 import FeedsPageView from './FeedsPage.view';
 
-import type { ReduxState } from './feedsPageTypes';
+import type { ResourcesReduxState } from './feedsPageTypes';
 
 const FeedsPageController: FC = () => {
   const { setBulkQueryParameters } = useFetchData();
   const { data, isLoading, totalCount, userCustomSorts } = usePrepareData();
 
-  const currentPage = useSelector<{ resources: ReduxState }>(
+  const currentPage = useSelector<{ resources: ResourcesReduxState }>(
     (state) => state.resources[NewsResources.NewsApi]?.parameters?.page ?? 1,
   ) as NewsApiParameters['page'];
 
