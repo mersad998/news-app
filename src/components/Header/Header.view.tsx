@@ -1,7 +1,7 @@
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Input, Avatar } from '@heroui/react';
 
 import type { ChangeEvent, FC } from 'react';
-import type { HeaderViewProps } from './HeaderTypes';
+import type { HeaderViewProps } from './Header.types';
 
 const SearchIcon: FC<{ size: number; strokeWidth?: number }> = ({ size = 24, strokeWidth = 1.5 }) => (
   <svg aria-hidden="true" fill="none" focusable="false" height={size} role="presentation" viewBox="0 0 24 24" width={size}>

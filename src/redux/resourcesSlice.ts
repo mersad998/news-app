@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { NewsResources } from '@providers/dataProvider/dataProviderTypes';
-import NYTMockData from '@constants/NYTMockData.json'; // you can uncomment this line to use mock data
+import { NewsResources } from '@providers/DataProvider/DataProvider.types';
+import NYTMockData from '@constants/NYTMockData.json';
 
 import { ResourcesState } from './types';
 

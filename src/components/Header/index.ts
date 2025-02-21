@@ -1,1 +1,1 @@
-export { default as Header } from './HeaderController';
+export { default as Header } from './Header.controller';

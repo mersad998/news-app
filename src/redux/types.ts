@@ -4,7 +4,7 @@ import {
   NewsApiParameters,
   NewsResources,
   TheGuardianParameters,
-} from '@providers/dataProvider/dataProviderTypes';
+} from '@providers/DataProvider/DataProvider.types';
 
 export interface ResourceState<T> {
   data: T | null;

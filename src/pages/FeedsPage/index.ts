@@ -1,1 +1,1 @@
-export { default as FeedsPage } from './FeedsPageController';
+export { default as FeedsPage } from './FeedsPage.controller';

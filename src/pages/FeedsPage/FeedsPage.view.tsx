@@ -1,7 +1,7 @@
 import { type FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Pagination } from '@heroui/react';
-import { FeedCard } from '@components/feedCard';
+import { FeedCard } from '@components/FeedCard';
 import { SearchBar } from '@components/searchBar';
 import { FeaturedSlider } from '@components/FeaturedSlider';
 import { shuffleArray } from '@utils/shuffleArray';

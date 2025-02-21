@@ -28,6 +28,7 @@ export const EnTranslations = {
   },
   feeds: {
     continueToFullPage: 'continue to full page',
+    noDataHeading: 'Ooops, ',
     noData: 'No data found with this parameters',
   },
 } as const;

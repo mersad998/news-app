@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { AnyAction } from 'redux';
-import { fetchData } from '@providers/dataProvider';
+import { fetchData } from '@providers/DataProvider';
 import { ReduxState } from '@pages/FeedsPage/feedsPageTypes';
 import { setBulkParameters, setParameter } from '@redux/resourcesSlice';
 import {
@@ -10,7 +10,7 @@ import {
   NewsApiParameters,
   NewsResources,
   TheGuardianParameters,
-} from '@providers/dataProvider/dataProviderTypes';
+} from '@providers/DataProvider/DataProvider.types';
 
 import { useSelectedResources } from './useSelectedResources';
 

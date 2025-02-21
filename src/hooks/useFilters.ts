@@ -1,6 +1,6 @@
 import { useState, ChangeEvent } from 'react';
 import useFetchData from '@hooks/useFetchData';
-import { NewsResources } from '@providers/dataProvider/dataProviderTypes';
+import { NewsResources } from '@providers/DataProvider/DataProvider.types';
 
 export interface Filters {
   author: string;

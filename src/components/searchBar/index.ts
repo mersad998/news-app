@@ -1,1 +1,1 @@
-export { default as SearchBar } from './searchBarController';
+export { default as SearchBar } from './SearchBar.controller';

@@ -1,9 +1,9 @@
 import { format, isBefore, parseISO } from 'date-fns';
-import { NewsResources } from '@providers/dataProvider/dataProviderTypes';
+import { NewsResources } from '@providers/DataProvider/DataProvider.types';
 import { UserCustomSort } from '@hooks/usePrepareData';
 
 import type { NYTimesArticleInterface, NewsApiArticleInterface, TheGuardianArticleInterface } from './newsTypes';
-import type { ReduxState, DisplayableArticle } from './feedsPageTypes';
+import type { ReduxState, DisplayableArticle } from './FeedsPage.types';
 
 // -----------------
 // Date Formatting

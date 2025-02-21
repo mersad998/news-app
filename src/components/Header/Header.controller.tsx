@@ -1,13 +1,13 @@
 import { useCallback, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-import SettingsContext from '@contexts/settingsContext';
+import SettingsContext from '@contexts/SettingsContext';
 import useFetchData from '@hooks/useFetchData';
-import { debounce } from '@pages/FeedsPage/feedsPageHelper';
+import { debounce } from '@pages/FeedsPage/FeedsPage.helper';
 
-import HeaderView from './HeaderView';
+import HeaderView from './Header.view';
 
 import type { ChangeEvent, FC } from 'react';
-import type { HeaderControllerProps } from './HeaderTypes';
+import type { HeaderControllerProps } from './Header.types';
 
 const HeaderController: FC<HeaderControllerProps> = ({ title }) => {
   const { colorMode, language } = useContext(SettingsContext);
@@ -31,7 +31,7 @@ const HeaderController: FC<HeaderControllerProps> = ({ title }) => {
     <HeaderView
       title={title}
       t={t}
-      selectedLanguage={language.selectedLanguage}
+      selectedLanguage={language.selectedLanguage!}
       toggleLanguage={toggleLanguage}
       toggleTheme={toggleTheme}
       onSearch={onSearch}

@@ -1,12 +1,12 @@
 import { memo, type FC, useCallback } from 'react';
 import useFetchData from '@hooks/useFetchData';
 import usePrepareData from '@hooks/usePrepareData';
-import { NewsApiParameters, NewsResources } from '@providers/dataProvider/dataProviderTypes';
+import { NewsApiParameters, NewsResources } from '@providers/DataProvider/DataProvider.types';
 import { useSelector } from 'react-redux';
 
 import FeedsLoadingSkeleton from './FeedsPage.loading';
-import { debounce } from './feedsPageHelper';
-import FeedsPageView from './FeedsPageView';
+import { debounce } from './FeedsPage.helper';
+import FeedsPageView from './FeedsPage.view';
 
 import type { ReduxState } from './feedsPageTypes';
 

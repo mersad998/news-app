@@ -1,9 +1,9 @@
 import { type FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@heroui/react';
-import { NewsResources } from '@providers/dataProvider/dataProviderTypes';
+import { NewsResources } from '@providers/DataProvider/DataProvider.types';
 
-import type { FeedCardProps } from './feedCard.type';
+import type { FeedCardProps } from './FeedCard.types';
 
 const FeedCardView: FC<FeedCardProps> = ({ article }) => {
   const { author, date, description, images, resource, sourceName, title, url } = article;

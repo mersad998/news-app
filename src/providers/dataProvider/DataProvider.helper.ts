@@ -1,6 +1,14 @@
+import axios from 'axios';
 import querystring from 'qs';
+import { setData, setError } from '@redux/resourcesSlice';
 
-import { type ApiKeyInformation, type GetBaseUrlByResourceName, type FetchDataOptions, NewsResources } from './dataProviderTypes';
+import {
+  type ApiKeyInformation,
+  type GetBaseUrlByResourceName,
+  type FetchDataOptions,
+  type FetchData,
+  NewsResources,
+} from './DataProvider.types';
 
 // receive resource name and return base url and api key for that
 export const getBaseUrlByResourceName: GetBaseUrlByResourceName = (resource) => {
@@ -34,4 +42,25 @@ export const getBaseUrlByResourceName: GetBaseUrlByResourceName = (resource) => 
 // merge request parameters with api key, then change it to query parameter format
 export const createQueryParameters = (parameters: FetchDataOptions['parameters'], apiKey: ApiKeyInformation): string => {
   return querystring.stringify({ ...parameters, ...apiKey });
+};
+
+export const getDataFromApi: FetchData = async (payload, { dispatch }) => {
+  const { resource, parameters, valueKeyName } = payload;
+  const { baseUrl, apiKeyName, apiKeyValue } = getBaseUrlByResourceName(resource);
+
+  const apiKeyInformation = { [apiKeyName]: apiKeyValue } as ApiKeyInformation;
+  const queryParameters = createQueryParameters(parameters, apiKeyInformation);
+
+  try {
+    const response = await axios.get(`${baseUrl}${queryParameters}`, { timeout: 10000 });
+
+    // newsApiMockResponse
+    const data = valueKeyName ? response.data[valueKeyName] : response.data;
+
+    dispatch(setData({ resourceName: resource, data }));
+    return data;
+  } catch (error) {
+    dispatch(setError({ resourceName: resource }));
+    throw error; // Re-throw the error for the component to handle if needed
+  }
 };

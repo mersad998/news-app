@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { useSelectedResources } from '@hooks/useSelectedResources';
 
-import SearchBarView from './searchBarView';
+import SearchBarView from './SearchBar.view';
 
-import type { SearchBarControllerProps } from './searchBarTypes';
+import type { SearchBarControllerProps } from './SearchBar.types';
 
 const SearchBarController: FC<SearchBarControllerProps> = ({ userCustomSorts }) => {
   const { selectedResources, onResourceSelect: handleResourceSelect } = useSelectedResources();

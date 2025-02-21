@@ -28,6 +28,7 @@ export const DeTranslations = {
   },
   feeds: {
     continueToFullPage: 'Weiter zur ganzen Seite',
+    noDataHeading: 'Ooops, ',
     noData: 'Keine Daten mit diesen Parametern gefunden',
   },
 } as const;

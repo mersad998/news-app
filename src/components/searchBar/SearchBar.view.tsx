@@ -2,10 +2,10 @@ import { FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Select, SelectItem, Button, Popover, PopoverTrigger, PopoverContent, SharedSelection } from '@heroui/react';
 import { convertToArray } from '@utils/convertToArray';
-import { NewsResources } from '@providers/dataProvider/dataProviderTypes';
+import { NewsResources } from '@providers/DataProvider/DataProvider.types';
 
 import AdvancedSearchPopover from './AdvancedSearchPopover';
-import { SearchBarViewProps } from './searchBarTypes';
+import { SearchBarViewProps } from './SearchBar.types';
 
 const resources = [
   { key: NewsResources.NewsApi, label: 'NewsAPI' },

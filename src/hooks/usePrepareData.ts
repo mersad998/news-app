@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { DisplayableArticle, ReduxState } from '@pages/FeedsPage/feedsPageTypes';
-import { NewsResources } from '@providers/dataProvider/dataProviderTypes';
-import { mergeArticles, sortFeeds } from '@pages/FeedsPage//feedsPageHelper';
+import { NewsResources } from '@providers/DataProvider/DataProvider.types';
+import { mergeArticles, sortFeeds } from '@pages/FeedsPage/FeedsPage.helper';
 
 export interface UserCustomSort {
   author: string;
