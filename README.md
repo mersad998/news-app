@@ -1,50 +1,64 @@
-# React + TypeScript + Vite
+# News Aggregator App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the News Aggregator app! This app fetches news from three different APIs
 
-Currently, two official plugins are available:
+- NewsAPI
+- The Guardian API
+- The New York Times
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+and aggregates them into a unified news feed.
 
-## Expanding the ESLint configuration
+## What the App Does
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+The News Aggregator app provides the following features:
 
-- Configure the top-level `parserOptions` property like this:
+- **News Aggregation:** Fetches and consolidates news articles from NewsAPI, The Guardian API, and The New York Times API.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- **Development Mode:** Run the app in development mode to make changes and test new features.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- **Testing:** Utilizes Jest for testing to ensure the reliability of the app.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- **Deployment:** Easily deploy the app using Docker and Docker Compose.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+## How to Run in Development Mode
+
+To run the app in development mode, follow these steps:
+
+1. **Clone the Repository:**
+
+   ```bash
+   git clone https://github.com/mersad998/news-app
+   ```
+
+2. **run App in development mode :**
+
+   ```bash
+   yarn
+
+   yarn dev
+
+   ```
+
+3. **Run Tests :**
+
+   ```bash
+   yarn test
+
+   ```
+
+4. **Run on production mode :**
+
+   ```bash
+   yarn preview
+   ```
+
+## OR:
+
+### 1. Pull the Docker Image
+
+Pull the News Aggregator Docker image from Docker Hub:
+
+```bash
+docker pull mersadmgl/news-app:1
+docker run -p 4173:4173 mersadmgl/news-app:1
 ```
