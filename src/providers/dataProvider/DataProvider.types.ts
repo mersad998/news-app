@@ -1,3 +1,5 @@
+import { AppDispatch } from '@redux/store';
+
 import type { AxiosResponse } from 'axios';
 
 // declare all news websites as an enum to prevent misspelling entire app
@@ -47,4 +49,9 @@ export interface FetchDataOptions {
   valueKeyName?: string;
 }
 
-export type FetchData = (options: FetchDataOptions, reduxHelper: any) => Promise<AxiosResponse['data']>;
+interface ReduxHelper {
+  dispatch: AppDispatch;
+  someOtherFunction?: () => void; // Example additional function
+}
+
+export type FetchData = (options: FetchDataOptions, reduxHelper: ReduxHelper) => Promise<AxiosResponse['data']>;

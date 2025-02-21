@@ -1,6 +1,5 @@
 import i18n from '@providers/i18n';
 import { createSlice } from '@reduxjs/toolkit';
-import { clone } from '@utils/clone';
 import { readFromLocalStorage } from '@utils/readFromLocalStorage';
 import { writeToLocalStorage } from '@utils/writeToLocalStorage';
 

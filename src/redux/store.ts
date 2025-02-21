@@ -9,3 +9,7 @@ export const store = configureStore({
     settings: SettingsReducer,
   },
 });
+
+// Export RootState type
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;

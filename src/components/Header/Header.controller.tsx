@@ -2,16 +2,17 @@ import { useCallback } from 'react';
 import useFetchData from '@hooks/useFetchData';
 import { debounce } from '@pages/FeedsPage/FeedsPage.helper';
 import { useDispatch, useSelector } from 'react-redux';
-import { SettingsState, toggleLanguage, toggleTheme } from '@redux/settingsSlice';
+import { toggleLanguage, toggleTheme } from '@redux/settingsSlice';
 
 import HeaderView from './Header.view';
 
 import type { ChangeEvent, FC } from 'react';
 import type { HeaderControllerProps } from './Header.types';
+import type { RootState } from '@redux/store';
 
 const HeaderController: FC<HeaderControllerProps> = ({ title }) => {
   const dispatch = useDispatch();
-  const { selectedLanguage, selectedTheme } = useSelector((state: any) => state.settings as SettingsState);
+  const { selectedLanguage, selectedTheme } = useSelector((state: RootState) => state.settings);
   const { setBulkQueryParameters } = useFetchData();
 
   // Handlers for toggling language and theme
