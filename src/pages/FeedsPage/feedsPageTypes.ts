@@ -5,7 +5,6 @@ import {
   NewsResources,
 } from '@providers/dataProvider/dataProviderTypes';
 
-import type { ChangeEvent } from 'react';
 import type { UserCustomSort } from '@hooks/usePrepareData';
 import type { NewsApiArticleInterface, NYTimesArticleInterface, TheGuardianArticleInterface } from './newsTypes';
 
@@ -40,7 +39,6 @@ export interface FeedsPageViewProps {
   totalCount: number;
   userCustomSorts: UserCustomSort; // Ensure this type is correct
   currentPage: number;
-  onSearch: (event: ChangeEvent<HTMLInputElement>) => void;
   onPageChange: (page: number) => void;
 }
 

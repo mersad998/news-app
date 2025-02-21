@@ -1,4 +1,4 @@
-import { useCallback, useContext, useState } from 'react';
+import { useCallback, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import SettingsContext from '@contexts/settingsContext';
 import useFetchData from '@hooks/useFetchData';

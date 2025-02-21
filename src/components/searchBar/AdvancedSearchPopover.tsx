@@ -1,21 +1,23 @@
-import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useFilters } from '@hooks/useFilters';
+import { Filters, useFilters } from '@hooks/useFilters';
+import { UserCustomSort } from '@hooks/usePrepareData';
 
 import FilterInput from './FilterInput';
 
+import type { FC } from 'react';
+
 interface AdvancedSearchPopoverProps {
-  userCustomSorts: any;
-  onSearch: (filters: any) => void;
+  userCustomSorts: UserCustomSort;
 }
 
-const AdvancedSearchPopover: FC<AdvancedSearchPopoverProps> = ({ userCustomSorts, onSearch }) => {
+const AdvancedSearchPopover: FC<AdvancedSearchPopoverProps> = ({ userCustomSorts }) => {
   const { t } = useTranslation();
 
-  const { filters, handleFilterChange } = useFilters(
-    { author: userCustomSorts.author || '', category: userCustomSorts.category || '', sources: userCustomSorts.sources || '' },
-    onSearch,
-  );
+  const { filters, handleFilterChange } = useFilters({
+    author: userCustomSorts.author || '',
+    category: userCustomSorts.category || '',
+    sources: userCustomSorts.sources || '',
+  } as Filters);
 
   return (
     <div className="p-4 space-y-4">
@@ -23,7 +25,7 @@ const AdvancedSearchPopover: FC<AdvancedSearchPopoverProps> = ({ userCustomSorts
         <FilterInput
           key={filterKey}
           id={filterKey}
-          value={filters[filterKey]}
+          value={filters[filterKey as keyof Filters]}
           onChange={handleFilterChange}
           label={t(`search.${filterKey}`)}
         />

@@ -2,13 +2,18 @@ import { useState, ChangeEvent } from 'react';
 import useFetchData from '@hooks/useFetchData';
 import { NewsResources } from '@providers/dataProvider/dataProviderTypes';
 
-interface Filters {
+export interface Filters {
   author: string;
   category: string;
   sources: string;
 }
 
-export const useFilters = (initialFilters: Filters, onSearch: (filters: Filters) => void) => {
+export const useFilters = (
+  initialFilters: Filters,
+): {
+  filters: Filters;
+  handleFilterChange: (e: ChangeEvent<HTMLInputElement>) => void;
+} => {
   const [filters, setFilters] = useState<Filters>(initialFilters);
   const { setQueryParameterToResource } = useFetchData();
 
@@ -33,7 +38,6 @@ export const useFilters = (initialFilters: Filters, onSearch: (filters: Filters)
 
     setFilters((prev) => {
       const newFilters = { ...prev, [id]: value };
-      onSearch(newFilters);
       return newFilters;
     });
   };

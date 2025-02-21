@@ -13,12 +13,12 @@ const resources = [
   { key: NewsResources.NewYorkTimes, label: 'NY Times' },
 ];
 
-const SearchBarView: FC<SearchBarViewProps> = ({ onResourceSelect, onSearch, userCustomSorts, selectedResources }) => {
+const SearchBarView: FC<SearchBarViewProps> = ({ onResourceSelect, userCustomSorts, selectedResources }) => {
   const { t } = useTranslation();
 
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
 
-  const handleResourceChange = (keys: Set<string>) => {
+  const handleResourceChange = (keys: Set<string>): void => {
     const selectedKeysArray = convertToArray(keys);
     onResourceSelect(selectedKeysArray);
   };
@@ -48,7 +48,7 @@ const SearchBarView: FC<SearchBarViewProps> = ({ onResourceSelect, onSearch, use
           <Button onClick={() => setIsPopoverOpen((prev) => !prev)}>{t('search.customizeFeeds')}</Button>
         </PopoverTrigger>
         <PopoverContent>
-          <AdvancedSearchPopover userCustomSorts={userCustomSorts} onSearch={onSearch} />
+          <AdvancedSearchPopover userCustomSorts={userCustomSorts} />
         </PopoverContent>
       </Popover>
     </div>

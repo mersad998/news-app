@@ -8,14 +8,7 @@ import { shuffleArray } from '@utils/shuffleArray';
 
 import type { FeedsPageViewProps } from './feedsPageTypes';
 
-const FeedsPageView: FC<FeedsPageViewProps> = ({
-  articles,
-  totalCount,
-  userCustomSorts,
-  currentPage,
-  onSearch,
-  onPageChange,
-}) => {
+const FeedsPageView: FC<FeedsPageViewProps> = ({ articles, totalCount, userCustomSorts, currentPage, onPageChange }) => {
   const { t } = useTranslation();
 
   // separate articles with and without image
@@ -33,7 +26,7 @@ const FeedsPageView: FC<FeedsPageViewProps> = ({
   return (
     <div className="max-w-7xl mx-auto py-6 px-4">
       {/* Search & Filters */}
-      <SearchBar userCustomSorts={userCustomSorts} onSearch={onSearch} />
+      <SearchBar userCustomSorts={userCustomSorts} />
 
       {/* Featured News Slider */}
       {featuredArticles.length > 0 && <FeaturedSlider featuredArticles={featuredArticles} />}

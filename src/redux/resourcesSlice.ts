@@ -72,14 +72,8 @@ const resourcesSlice = createSlice({
       state[resourceName].hasError = true;
       state[resourceName].isLoading = false;
 
-      state[resourceName].data = NYTMockData.response as any;
-      state[resourceName].isLoading = false;
-      /*
-       * you can uncomment these lines to use mock data 👇
-
-       * state[resourceName].data = NYTMockData.response as any;
-       * state[resourceName].isLoading = false;
-       */
+      // use mock data in case of failure
+      state[resourceName].data = NYTMockData.response as NYTimesArticleInterface;
     },
 
     setParameter: (state, action: PayloadAction<SetParameterPayload>) => {

@@ -5,7 +5,7 @@ export const parseJSON = <T>(stringifiedJson: string): T | null => {
   try {
     parsed = JSON.parse(stringifiedJson) as T;
   } catch (err) {
-    console.error('parseJSON: %s', stringifiedJson);
+    console.error('parseJSON: %s', stringifiedJson, err);
   }
 
   return parsed;
