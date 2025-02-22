@@ -1,5 +1,3 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { fetchData } from './DataProvider.helper';
 
-import { getDataFromApi } from './DataProvider.helper';
-
-export const fetchData = createAsyncThunk('newsResources/fetchData', getDataFromApi);
+export { fetchData };

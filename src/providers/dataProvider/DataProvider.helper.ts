@@ -1,12 +1,12 @@
 import axios from 'axios';
 import querystring from 'qs';
 import { setData, setError } from '@redux/resourcesSlice';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import {
   type ApiKeyInformation,
   type GetBaseUrlByResourceName,
   type FetchDataOptions,
-  type FetchData,
   NewsResources,
 } from './DataProvider.types';
 
@@ -44,8 +44,8 @@ export const createQueryParameters = (parameters: FetchDataOptions['parameters']
   return querystring.stringify({ ...parameters, ...apiKey });
 };
 
-export const getDataFromApi: FetchData = async (payload, { dispatch }) => {
-  const { resource, parameters, valueKeyName } = payload;
+export const fetchData = createAsyncThunk('newsResources/fetchData', async (options: FetchDataOptions, { dispatch }) => {
+  const { resource, parameters, valueKeyName } = options;
   const { baseUrl, apiKeyName, apiKeyValue } = getBaseUrlByResourceName(resource);
 
   const apiKeyInformation = { [apiKeyName]: apiKeyValue } as ApiKeyInformation;
@@ -63,4 +63,4 @@ export const getDataFromApi: FetchData = async (payload, { dispatch }) => {
     dispatch(setError({ resourceName: resource }));
     throw error; // Re-throw the error for the component to handle if needed
   }
-};
+});

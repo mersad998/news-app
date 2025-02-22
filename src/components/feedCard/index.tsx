@@ -1,1 +1,1 @@
-export { default as FeedCard } from './feedCard.controller';
+export { default as FeedCard } from './FeedCard.controller';
